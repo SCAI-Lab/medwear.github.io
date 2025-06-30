@@ -17,15 +17,52 @@ header {
   align-items: center;
 }
 
+/* Header top area with white background for logo and text */
+.header-top {
+  text-align: center;
+  background-color: white;  /* preserves white background behind logo */
+  padding: 20px 0;
+  width: 100%;
+}
+
+/* Container for logo + title + subtitle */
+.site-title {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Logo with white background and padding */
+.logo {
+  display: inline-block;  /* keeps logo inline */
+  background-color: white; /* ensures white behind logo */
+  padding: 5px; /* optional padding around logo */
+  max-height: 100px;
+  width: auto;
+}
+
+/* Main title styling */
 .site-title h1 {
   margin: 0;
   font-size: 2.5rem;
+  font-weight: bold;
+  color: #000; /* black text */
 }
 
+/* Subtitle styling */
 .site-title p {
   margin: 5px 0 0 0;
   font-weight: 300;
   font-size: 1.2rem;
+  color: #555;
+}
+
+/* Blue line separator below header-top */
+.header-separator {
+  border: none;
+  height: 4px;
+  background-color: #0055cc;  /* blue separator */
+  margin: 0 auto 20px auto;
+  max-width: 600px; /* align width with site-title */
 }
 
 nav {
@@ -94,6 +131,7 @@ footer {
   height: 30px;
   margin-right: 0;
 }
+
 .under-construction-banner {
   background-color: #ffcc00;
   color: #333;
