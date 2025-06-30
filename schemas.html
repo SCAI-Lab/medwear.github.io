@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Schemas | MEDWEAR</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="favicon.ico" />
+</head>
+
+<body>
+  <header>
+    <div class="header-top">
+      <div class="site-title">
+        <h1>MEDWEAR</h1>
+        <p>Open, Interoperable Standards for Medical Wearables</p>
+      </div>
+    <div class="under-construction-banner">
+        🚧 This website is currently under construction. Some content may be incomplete. 🚧
+    </div>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="standards.html">Standards</a>
+      <a href="documentation.html">Documentation</a>
+      <a href="schemas.html" class="active">Schemas</a>
+      <a href="contribute.html">Contribute</a>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <h2>MEDWEAR Physiological Signal Schemas</h2>
+      <p>
+        Below are the core MEDWEAR message types representing raw sensor data for common physiological signals.
+        Each links to downloadable JSON Schema and ROS 2 message definitions.
+      </p>
+
+      <ul>
+        <li><strong>Ballistocardiogram (BCG)</strong> — <a href="schemas/bcg_schema.json" download>JSON Schema</a> | <a href="ros2_msgs/bcg.msg" download>ROS 2 .msg</a></li>
+        <li><strong>Electrocardiogram (ECG)</strong> — <a href="schemas/ecg_schema.json" download>JSON Schema</a> | <a href="ros2_msgs/ecg.msg" download>ROS 2 .msg</a></li>
+        <li><strong>Electrodermal Activity (EDA)</strong> — <a href="schemas/eda_schema.json" download>JSON Schema</a> | <a href="ros2_msgs/eda.msg" download>ROS 2 .msg</a></li>
+        <li><strong>Electroencephalogram (EEG)</strong> — <a href="schemas/eeg_schema.json" download>JSON Schema</a> | <a href="ros2_msgs/eeg.msg" download>ROS 2 .msg</a></li>
+        <li><strong>Electromyography (EMG)</strong> — <a href="schemas/emg_schema.json" download>JSON Schema</a> | <a href="ros2_msgs/emg.msg" download>ROS 2 .msg</a></li>
+        <li><strong>Electrooculogram (EOG)</strong> — <a href="schemas/eog_schema.json" download>JSON Schema</a> | <a href="ros2_msgs/eog.msg" download>ROS 2 .msg</a></li>
+        <li><strong>Impedance Cardiogram (ICG)</strong> — <a href="schemas/icg_schema.json" download>JSON Schema</a> | <a href="ros2_msgs/icg.msg" download>ROS 2 .msg</a></li>
+        <li><strong>Photoplethysmogram (PPG)</strong> — <a href="schemas/ppg_schema.json" download>JSON Schema</a> | <a href="ros2_msgs/ppg.msg" download>ROS 2 .msg</a></li>
+      </ul>
+
+      <p>
+        All schemas and message definitions are maintained in our
+        <a href="https://github.com/SCAI-Lab/ord_schemas" target="_blank" rel="noopener">GitHub repository</a>.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-logos">
+      <img src="assets/images/scai_logo.png" alt="SCAI Lab Logo" class="logo" />
+      <img src="assets/images/dart_logo.png" alt="DART Logo" class="logo" />
+      <img src="assets/images/ethz_logo.png" alt="ETH Zurich Logo" class="logo" />
+    </div>
+    <p>© 2025 ETH Zurich – MEDWEAR Project | Contact: diego.paez@scai.ethz.ch</p>
+  </footer>
+</body>
+
+</html>
