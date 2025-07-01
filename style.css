@@ -9,67 +9,58 @@ body {
 }
 
 header {
-  background-color: #004080;
+  background-color: #003366; /* dark blue */
   color: white;
-  padding: 20px 40px;
+  padding: 10px 30px;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   align-items: center;
+  justify-content: space-between;
 }
 
-.site-title h1 {
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.header-left h1 {
   margin: 0;
-  font-size: 2.5rem;
 }
 
-.site-title p {
-  margin: 5px 0 0 0;
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo {
+  height: 40px;
+  width: auto;
+}
+
+header p {
+  width: 100%;
+  margin: 5px 0 10px 0;
   font-weight: 300;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
 }
 
 nav {
-  margin-top: 10px;
-  text-align: center;
+  width: 100%;
+  display: flex;
+  gap: 25px;
+  font-weight: 600;
 }
 
 nav a {
   color: white;
   text-decoration: none;
-  margin: 0 15px;
-  font-weight: 600;
   font-size: 1rem;
-  padding: 5px 10px;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
 }
 
-nav a:hover,
-nav a.active {
-  background-color: #0066cc;
-}
-
-main {
-  max-width: 900px;
-  margin: 30px auto;
-  padding: 0 20px;
-}
-
-h2 {
-  border-bottom: 2px solid #004080;
-  padding-bottom: 5px;
-  margin-bottom: 20px;
-  color: #004080;
-}
-
-pre {
-  background-color: #f4f4f4;
-  padding: 15px;
-  border-radius: 5px;
-  overflow-x: auto;
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 0.95rem;
-  line-height: 1.4;
+nav a:hover {
+  text-decoration: underline;
 }
 
 footer {
