@@ -5,7 +5,7 @@ body {
   color: #222;
   background-color: #fff;
   text-align: left;
-  padding: 20px 15px;
+  margin: 0 auto;
 }
 
 /* Header full width with inner container */
