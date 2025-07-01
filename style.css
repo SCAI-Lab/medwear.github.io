@@ -1,83 +1,64 @@
-/* General page styles */
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  line-height: 1.6;
-  color: #222;
-  margin: 0;
-  padding: 0;
-  background-color: #fff;
-}
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #222;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+  }
 
-/* Change header to transparent bg */
-header {
-  background-color: transparent;  /* remove blue background */
-  color: #000;                    /* black text */
-  padding: 0 40px 10px 40px;      /* adjust padding: no top, keep sides and bottom */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+  header {
+    background-color: transparent;
+    color: #000;
+    padding: 0 40px 10px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
-/* Add subtle shadow to separate white header-top */
-.header-top {
-  text-align: center;
-  background-color: white;  /* keep white bg behind logo */
-  padding: 20px 0;
-  width: 100%;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* subtle shadow */
-}
+  .header-top {
+    text-align: center;
+    background-color: white;
+    padding: 20px 0;
+    width: 100%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
 
-/* Make logo smaller */
-.logo {
-  max-height: 60px; /* reduce from 100px */
-  width: auto;
-  display: inline-block;
-  background-color: white;
-  padding: 5px;
-}
+  .logo {
+    max-height: 60px;
+    width: auto;
+    display: inline-block;
+    background-color: white;
+    padding: 5px;
+  }
 
-/* Update blue separator to nicer blue */
-.header-separator {
-  background-color: #007ACC;  /* nicer blue */
-}
+  .site-title {
+    max-width: 600px;
+    margin: 0 auto;
+  }
 
-/* Main title styling */
-.site-title h1 {
-  margin: 0;
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: #000; /* black text */
-}
+  .site-title h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #000;
+  }
 
-/* Subtitle styling */
-.site-title p {
-  margin: 5px 0 0 0;
-  font-weight: 300;
-  font-size: 1.2rem;
-  color: #555;
-}
+  .site-title p {
+    margin: 5px 0 0 0;
+    font-weight: 300;
+    font-size: 1.2rem;
+    color: #555;
+  }
 
-
-nav {
-  margin-top: 10px;
-  text-align: center;
-}
-
-nav a {
-  color: white;
-  text-decoration: none;
-  margin: 0 15px;
-  font-weight: 600;
-  font-size: 1rem;
-  padding: 5px 10px;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
-}
-
-nav a:hover,
-nav a.active {
-  background-color: #0066cc;
-}
+  .header-separator {
+    border: none;
+    height: 4px;
+    background-color: #007ACC;
+    margin: 0 auto 20px auto;
+    max-width: 600px;
+  }
+  
 
 main {
   max-width: 900px;
