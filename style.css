@@ -8,84 +8,70 @@ body {
   background-color: #fff;
 }
 
-header {
+.header-upper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  padding: 15px 0;
+  border-bottom: 3px solid #003366; /* dark blue */
+}
+
+nav a:hover,
+nav a.active {
   background-color: #003366; /* dark blue */
   color: white;
-  padding: 10px 30px;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
 }
 
-.header-left {
-  display: flex;
-  align-items: center;
-  gap: 15px;
+.header-lower {
+  width: 100%;
+  background-color: #f5f5f5;
+  color: #333;
+  text-align: center;
+  padding: 20px 15px;
 }
 
-.header-left h1 {
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
   margin: 0;
-}
-
-.header-right {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  padding: 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .logo {
-  height: 40px;
-  width: auto;
-}
-
-header p {
-  width: 100%;
-  margin: 5px 0 10px 0;
-  font-weight: 300;
-  font-size: 1.1rem;
+  max-height: 90px;
+  background: white;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  display: block;
 }
 
 nav {
   width: 100%;
   display: flex;
-  gap: 25px;
-  font-weight: 600;
+  justify-content: center;
+  margin-top: 10px;
 }
 
 nav a {
-  color: white;
+  color: #333;
   text-decoration: none;
+  margin: 0 15px;
+  font-weight: 600;
   font-size: 1rem;
+  padding: 5px 10px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-nav a:hover {
-  text-decoration: underline;
-}
-
-footer {
-  background-color: #f8f8f8;
-  text-align: center;
-  padding: 25px 10px;
-  margin-top: 40px;
-  color: #555;
-}
-
-.footer-logos {
-  margin-bottom: 15px;
-}
-
-.footer-logos img {
-  height: 40px;
-  margin: 0 12px;
-  vertical-align: middle;
-}
-
-.footer-logos img:last-child {
-  height: 30px;
-  margin-right: 0;
-}
 .under-construction-banner {
+  width: 100%;
   background-color: #ffcc00;
   color: #333;
   text-align: center;
