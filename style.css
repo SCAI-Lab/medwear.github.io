@@ -126,7 +126,7 @@ nav a.active {
 }
 
 .content-container p {
-  max-width: 600px;
+  max-width: 900px;
   margin: 0 auto;   /* centers the paragraph block itself */
   text-align: left; /* left align text inside paragraphs */
 }
