@@ -3,9 +3,14 @@ body {
   line-height: 1.6;
   color: #222;
   margin: 0;
-  padding: 0;
+  padding: 20px 15px;       /* padding around edges for smaller screens */
   background-color: #fff;
-  text-align: center; /* if you want all page content centered horizontally */
+  
+  max-width: 900px;         /* max width for readability */
+  margin-left: auto;        /* center horizontally */
+  margin-right: auto;
+
+  text-align: left;        /* align all text left by default */
 }
 
 .header-upper {
@@ -81,31 +86,34 @@ nav a {
   border-bottom: 2px solid #e6b800;
 }
 
+.footer-logos img {
+  height: 40px;
+  margin: 0 12px;    /* keep spacing between logos */
+  vertical-align: middle;
+  border: none;      /* remove any borders */
+  box-shadow: none;  /* remove any shadows */
+  background: none;  /* remove any background if present */
+}
+
 footer {
   background-color: #f8f8f8;
-  text-align: center;        /* center footer text */
+  color: #555;
   padding: 25px 10px;
   margin-top: 40px;
-  color: #555;
-  display: flex;
-  flex-direction: column;
-  align-items: center;       /* center everything inside footer */
-  gap: 15px;                 /* spacing between logos and text */
+
+  /* align text right but with some margin */
+  text-align: right;
+  max-width: 900px;       /* or whatever your content max width is */
+  margin-left: auto;      /* centers block horizontally */
+  margin-right: auto;
 }
 
 .footer-logos {
   display: flex;
-  justify-content: center;   /* center logos horizontally */
-  gap: 24px;                 /* space between logos */
-  flex-wrap: wrap;           /* optional: wrap on small screens */
-}
-
-.footer-logos img {
-  height: 40px;
-  margin: 0;
-  vertical-align: middle;
-}
-
-.footer-logos img:last-child {
-  height: 30px;
+  justify-content: flex-start; /* align logos left */
+  gap: 24px;
+  margin-bottom: 15px;
+  max-width: 900px;       /* same width as footer text */
+  margin-left: auto;
+  margin-right: auto;
 }
