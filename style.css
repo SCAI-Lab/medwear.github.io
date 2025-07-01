@@ -120,12 +120,15 @@ nav a.active {
   max-width: 900px;
   margin: 30px auto;
   padding: 0 15px;
-  text-align: center;  /* center the text */
+  text-align: left;  /* make text left-aligned */
 }
+
 .content-container p {
   max-width: 600px;
-  margin: 0 auto;
+  margin: 0 auto;   /* centers the paragraph block itself */
+  text-align: left; /* left align text inside paragraphs */
 }
+
 
 /* Footer full width */
 footer {
