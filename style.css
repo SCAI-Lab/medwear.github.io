@@ -1,5 +1,8 @@
 /* Reset margins/paddings on body, no max-width here */
 body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
   color: #222;
@@ -85,7 +88,7 @@ nav {
 
 /* Nav links */
 nav a {
-  color: ;
+  color: #f0f0f0;
   text-decoration: none;
   margin: 0 15px;
   font-weight: 600;
