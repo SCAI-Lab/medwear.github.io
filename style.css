@@ -5,7 +5,6 @@ body {
   color: #222;
   background-color: #fff;
   text-align: left;
-  margin: 0 auto;
 }
 
 /* Header full width with inner container */
@@ -86,7 +85,7 @@ nav {
 
 /* Nav links */
 nav a {
-  color: #f0f0f0;
+  color: ;
   text-decoration: none;
   margin: 0 15px;
   font-weight: 600;
@@ -99,8 +98,8 @@ nav a {
 /* Nav hover and active state */
 nav a:hover,
 nav a.active {
-  background-color: #003366;
-  color: white;
+  background-color: #f0f0f0;
+  color: #003366;
 }
 
 /* Under construction banner - full width */
