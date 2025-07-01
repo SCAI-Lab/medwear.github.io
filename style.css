@@ -8,36 +8,37 @@ body {
   background-color: #fff;
 }
 
+/* Change header to transparent bg */
 header {
-  background-color: #004080;
-  color: white;
-  padding: 20px 40px;
+  background-color: transparent;  /* remove blue background */
+  color: #000;                    /* black text */
+  padding: 0 40px 10px 40px;      /* adjust padding: no top, keep sides and bottom */
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-/* Header top area with white background for logo and text */
+/* Add subtle shadow to separate white header-top */
 .header-top {
   text-align: center;
-  background-color: white;  /* preserves white background behind logo */
+  background-color: white;  /* keep white bg behind logo */
   padding: 20px 0;
   width: 100%;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* subtle shadow */
 }
 
-/* Container for logo + title + subtitle */
-.site-title {
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-/* Logo with white background and padding */
+/* Make logo smaller */
 .logo {
-  display: inline-block;  /* keeps logo inline */
-  background-color: white; /* ensures white behind logo */
-  padding: 5px; /* optional padding around logo */
-  max-height: 100px;
+  max-height: 60px; /* reduce from 100px */
   width: auto;
+  display: inline-block;
+  background-color: white;
+  padding: 5px;
+}
+
+/* Update blue separator to nicer blue */
+.header-separator {
+  background-color: #007ACC;  /* nicer blue */
 }
 
 /* Main title styling */
@@ -56,14 +57,6 @@ header {
   color: #555;
 }
 
-/* Blue line separator below header-top */
-.header-separator {
-  border: none;
-  height: 4px;
-  background-color: #0055cc;  /* blue separator */
-  margin: 0 auto 20px auto;
-  max-width: 600px; /* align width with site-title */
-}
 
 nav {
   margin-top: 10px;
