@@ -88,7 +88,7 @@ nav a {
 
 .footer-logos img {
   height: 40px;
-  margin: 0 12px;    /* keep spacing between logos */
+  margin: 0 5px;    /* keep spacing between logos */
   vertical-align: middle;
   border: none;      /* remove any borders */
   box-shadow: none;  /* remove any shadows */
@@ -100,6 +100,7 @@ footer {
   color: #555;
   padding: 25px 10px;
   margin-top: 40px;
+  width: 100%;
 
   /* align text right but with some margin */
   text-align: right;
