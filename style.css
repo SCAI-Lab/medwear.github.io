@@ -271,6 +271,23 @@ section { margin-bottom: 2.8em; }
 
 .content-container li { margin-bottom: 0.38em; }
 
+/* ── Documentation block dividers ──────────────────────────── */
+.doc-block-title {
+  font-size: 2rem !important;
+  font-weight: 800 !important;
+  color: var(--navy) !important;
+  background: linear-gradient(90deg, var(--blue) 0%, var(--teal) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 3em 0 1.2em !important;
+  padding-bottom: 16px !important;
+  border-bottom: 3px solid var(--teal);
+  scroll-margin-top: 80px;
+}
+
+.doc-block-title::after { display: none !important; }
+
 /* ── Quick-link cards ───────────────────────────────────────── */
 .quick-links {
   display: grid;
@@ -427,12 +444,8 @@ footer {
   background: none;
   padding: 0;
   border-radius: 0;
-  opacity: 0.75;
-  filter: brightness(0) invert(1);
   transition: opacity 0.2s;
 }
-
-.footer-logos img:hover { opacity: 1; }
 
 .footer-logos .ethz-logo { height: 20px; }
 

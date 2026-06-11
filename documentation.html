@@ -23,12 +23,28 @@
   <div class="page-banner" style="background-image: url('assets/images/hero-schemas.jpg')">
     <div class="page-banner-content">
       <h1>Documentation</h1>
-      <p>Installation, usage examples, and integration guides</p>
+      <p>Guides for using MEDWEAR schemas and the data collection platform</p>
     </div>
   </div>
 
   <div class="content-container">
     <main>
+
+      <div class="quick-links" style="margin-bottom: 3em;">
+        <a href="#schemas" class="quick-link-card">
+          <h3>1 · Data Schemas</h3>
+          <p>Use MEDWEAR schemas in your own application — installation, validation, ROS 2 integration.</p>
+        </a>
+        <a href="#platform" class="quick-link-card">
+          <h3>2 · Data Collection Platform</h3>
+          <p>Deploy and use the MEDWEAR server stack — setup, authentication, API access.</p>
+        </a>
+      </div>
+
+      <!-- ══════════════════════════════════════════════════════
+           BLOCK 1 — DATA SCHEMAS
+      ══════════════════════════════════════════════════════ -->
+      <h2 id="schemas" class="doc-block-title">Using the Data Schemas</h2>
 
       <section>
         <h2>Installation</h2>
@@ -97,15 +113,45 @@ print("Data is valid.")</code></pre>
       </section>
 
       <section>
-        <h2>MED-API Setup</h2>
+        <h2>Resources</h2>
+
+        <h3>Example Datasets</h3>
+        <p>
+          Sample anonymized datasets for development and testing.
+          <a href="https://github.com/medwear/sample-data" target="_blank" rel="noopener">Download from GitHub</a>.
+        </p>
+
+        <h3>Publications</h3>
+        <ul>
+          <li>"MEDWEAR: Data Standardization of Wearable Devices for Healthcare Applications" (in preparation)</li>
+          <li>Symposium proceedings — <a href="https://scai.ethz.ch/symposium-2025.html" target="_blank" rel="noopener">PDF</a></li>
+        </ul>
+
+        <h3>External References</h3>
+        <ul>
+          <li><a href="https://json-schema.org/" target="_blank" rel="noopener">JSON Schema documentation</a></li>
+          <li><a href="https://standards.ieee.org/standard/1752-2021.html" target="_blank" rel="noopener">IEEE 1752-2021 Standard</a></li>
+          <li><a href="http://www.openmhealth.org" target="_blank" rel="noopener">Open mHealth</a></li>
+        </ul>
+      </section>
+
+      <!-- ══════════════════════════════════════════════════════
+           BLOCK 2 — DATA COLLECTION PLATFORM & API
+      ══════════════════════════════════════════════════════ -->
+      <h2 id="platform" class="doc-block-title">Using the MEDWEAR Data Collection Platform</h2>
+
+      <section>
+        <h2>Overview</h2>
         <p>
           MED-API is the backend service of the MEDWEAR platform — a secure REST API for ingesting,
           querying, and managing wearable health data. It runs alongside MinIO, InfluxDB, PostgreSQL,
           Keycloak, Dagster, Grafana, and pgAdmin as a single-server Docker stack.
           For the full API reference, see the <a href="med-api.html">MED-API page</a>.
         </p>
+      </section>
 
-        <h3>Quick Setup</h3>
+      <section>
+        <h2>Quick Setup</h2>
         <pre><code>./setup.sh</code></pre>
         <p>This will automatically:</p>
         <ul>
@@ -125,8 +171,10 @@ InfluxDB       : admin / wY8jxK7mP2qR9nL4
 Grafana        : admin / T3vB6cN1mX5pQ2rd
 pgAdmin        : admin@medwear.local / F8yA4kW7nJ2mR6s</code></pre>
         <p><strong>Note:</strong> Do not commit <code>.credentials.txt</code> to version control. It is already listed in <code>.gitignore</code>.</p>
+      </section>
 
-        <h3>Start &amp; Stop</h3>
+      <section>
+        <h2>Start &amp; Stop</h2>
         <pre><code># First time or after code changes
 docker compose -f docker-compose.medwear-minimal.yml build
 docker compose -f docker-compose.medwear-minimal.yml up -d
@@ -139,8 +187,10 @@ docker compose -f docker-compose.medwear-minimal.yml restart med-api
 
 # Stop all services
 docker compose -f docker-compose.medwear-minimal.yml down</code></pre>
+      </section>
 
-        <h3>Service Access</h3>
+      <section>
+        <h2>Service Access</h2>
         <table>
           <thead>
             <tr><th>Service</th><th>URL</th><th>Credentials</th></tr>
@@ -169,8 +219,10 @@ docker compose -f docker-compose.medwear-minimal.yml down</code></pre>
     -L 5050:localhost:5050 \
     user@your-server.com</code></pre>
         </details>
+      </section>
 
-        <h3>Authentication</h3>
+      <section>
+        <h2>Authentication</h2>
         <p>All endpoints require a Keycloak JWT token.</p>
         <details>
           <summary>Get a token (via API proxy — recommended)</summary>
@@ -192,8 +244,10 @@ docker compose -f docker-compose.medwear-minimal.yml down</code></pre>
           <summary>Health check</summary>
           <pre><code>curl -k https://localhost/v1/health</code></pre>
         </details>
+      </section>
 
-        <h3>Testing</h3>
+      <section>
+        <h2>Testing</h2>
         <pre><code>cd /path/to/repo/medwear_med_api
 source venv/bin/activate
 
@@ -214,40 +268,16 @@ curl -sk https://localhost/v1/health | jq .
 curl -sk -H "Authorization: Bearer $TOKEN" \
   "https://localhost/v1/data?limit=5" | jq .</code></pre>
         </details>
+      </section>
 
-        <h3>Backup</h3>
+      <section>
+        <h2>Backup</h2>
         <p>Backs up PostgreSQL, InfluxDB, and MinIO to a compressed archive. Backups older than 30 days are deleted automatically.</p>
         <pre><code># Run manually
 ./scripts/backup.sh /opt/medwear_backups
 
 # Add to crontab (daily at 2 AM)
 0 2 * * * /path/to/med-api/scripts/backup.sh /opt/medwear_backups >> /var/log/medwear_backup.log 2>&1</code></pre>
-      </section>
-
-      <section>
-        <h2>Resources</h2>
-
-        <h3>Example Datasets</h3>
-        <p>
-          Sample anonymized datasets for development and testing.
-          <a href="https://github.com/medwear/sample-data" target="_blank" rel="noopener">Download from GitHub</a>.
-        </p>
-
-        <h3>Publications</h3>
-        <ul>
-          <li>"MEDWEAR: Data Standardization of Wearable Devices for Healthcare Applications" (in preparation)</li>
-          <li>Symposium proceedings — <a href="https://scai.ethz.ch/symposium-2025.html" target="_blank" rel="noopener">PDF</a></li>
-        </ul>
-
-        <h3>External References</h3>
-        <ul>
-          <li><a href="https://json-schema.org/" target="_blank" rel="noopener">JSON Schema documentation</a></li>
-          <li><a href="https://standards.ieee.org/standard/1752-2021.html" target="_blank" rel="noopener">IEEE 1752-2021 Standard</a></li>
-          <li><a href="http://www.openmhealth.org" target="_blank" rel="noopener">Open mHealth</a></li>
-        </ul>
-
-        <h3>FAQs</h3>
-        <p>Coming soon: Frequently asked questions about MEDWEAR schemas and implementation.</p>
       </section>
 
     </main>
