@@ -8,28 +8,25 @@
   <link rel="icon" href="favicon.ico" />
 </head>
 <body>
+
   <header>
-    <div class="header-upper">
-      <!-- <img src="assets/images/medwear_logo.png" alt="MEDWEAR Logo" class="logo" /> -->
-    </div>
-    <div class="header-lower">
-      <h1>MEDWEAR</h1>
-      <p>Open, Interoperable Standards for Medical Wearables</p>
-    </div>
-    <hr class="header-separator" />
-    <div class="under-construction-banner">
-      🚧 This website is currently under construction. Some content may be incomplete. 🚧
-    </div>
+    <a href="index.html" class="header-brand">MEDWEAR</a>
     <nav>
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
-      <a href="standards.html">Standards</a>
       <a href="documentation.html">Documentation</a>
       <a href="schemas.html" class="active">Schemas</a>
-      <a href="contribute.html">Contribute</a>
       <a href="med-api.html">MED-API</a>
+      <a href="contribute.html">Contribute</a>
     </nav>
   </header>
+
+  <div class="page-banner" style="background-image: url('assets/images/hero-schemas.jpg')">
+    <div class="page-banner-content">
+      <h1>Schemas</h1>
+      <p>JSON and ROS 2 definitions for physiological signals</p>
+    </div>
+  </div>
 
   <div class="content-container">
     <main>
@@ -38,9 +35,10 @@
         <h2>MEDWEAR Physiological Signal Schemas</h2>
         <p>
           Below are the core MEDWEAR message types for common physiological signals.
-          Each schema is available as a downloadable JSON Schema and as a ROS 2 message definition.
-          All schemas and message definitions are maintained in our
-          <a href="https://github.com/SCAI-Lab/ord_schemas" target="_blank" rel="noopener">GitHub repository</a>.
+          JSON Schemas are maintained in the
+          <a href="https://github.com/SCAI-Lab/ord_schemas/tree/main/schema" target="_blank" rel="noopener">ord_schemas repository</a>.
+          ROS 2 message definitions are in the
+          <a href="https://github.com/SCAI-Lab/healthcare_msgs" target="_blank" rel="noopener">healthcare_msgs repository</a>.
         </p>
 
         <table>
@@ -52,24 +50,24 @@
             </tr>
           </thead>
           <tbody>
-            <tr><td>Ballistocardiogram (BCG)</td><td><a href="schemas/bcg_schema.json" download>bcg_schema.json</a></td><td><a href="ros2_msgs/bcg.msg" download>BCG.msg</a></td></tr>
-            <tr><td>Electrocardiogram (ECG)</td><td><a href="schemas/ecg_schema.json" download>ecg_schema.json</a></td><td><a href="ros2_msgs/ecg.msg" download>ECG.msg</a></td></tr>
-            <tr><td>Electrodermal Activity (EDA)</td><td><a href="schemas/eda_schema.json" download>eda_schema.json</a></td><td><a href="ros2_msgs/eda.msg" download>EDA.msg</a></td></tr>
-            <tr><td>Electroencephalogram (EEG)</td><td><a href="schemas/eeg_schema.json" download>eeg_schema.json</a></td><td><a href="ros2_msgs/eeg.msg" download>EEG.msg</a></td></tr>
-            <tr><td>Electromyography (EMG)</td><td><a href="schemas/emg_schema.json" download>emg_schema.json</a></td><td><a href="ros2_msgs/emg.msg" download>EMG.msg</a></td></tr>
-            <tr><td>Electrooculogram (EOG)</td><td><a href="schemas/eog_schema.json" download>eog_schema.json</a></td><td><a href="ros2_msgs/eog.msg" download>EOG.msg</a></td></tr>
-            <tr><td>Impedance Cardiogram (ICG)</td><td><a href="schemas/icg_schema.json" download>icg_schema.json</a></td><td><a href="ros2_msgs/icg.msg" download>ICG.msg</a></td></tr>
-            <tr><td>Photoplethysmogram (PPG)</td><td><a href="schemas/ppg_schema.json" download>ppg_schema.json</a></td><td><a href="ros2_msgs/ppg.msg" download>PPG.msg</a></td></tr>
+            <tr><td>Ballistocardiogram (BCG)</td><td><a href="https://github.com/SCAI-Lab/ord_schemas/tree/main/schema" target="_blank" rel="noopener">bcg_schema.json</a></td><td><a href="https://github.com/SCAI-Lab/healthcare_msgs" target="_blank" rel="noopener">BCG.msg</a></td></tr>
+            <tr><td>Electrocardiogram (ECG)</td><td><a href="https://github.com/SCAI-Lab/ord_schemas/tree/main/schema" target="_blank" rel="noopener">ecg_schema.json</a></td><td><a href="https://github.com/SCAI-Lab/healthcare_msgs" target="_blank" rel="noopener">ECG.msg</a></td></tr>
+            <tr><td>Electrodermal Activity (EDA)</td><td><a href="https://github.com/SCAI-Lab/ord_schemas/tree/main/schema" target="_blank" rel="noopener">eda_schema.json</a></td><td><a href="https://github.com/SCAI-Lab/healthcare_msgs" target="_blank" rel="noopener">EDA.msg</a></td></tr>
+            <tr><td>Electroencephalogram (EEG)</td><td><a href="https://github.com/SCAI-Lab/ord_schemas/tree/main/schema" target="_blank" rel="noopener">eeg_schema.json</a></td><td><a href="https://github.com/SCAI-Lab/healthcare_msgs" target="_blank" rel="noopener">EEG.msg</a></td></tr>
+            <tr><td>Electromyography (EMG)</td><td><a href="https://github.com/SCAI-Lab/ord_schemas/tree/main/schema" target="_blank" rel="noopener">emg_schema.json</a></td><td><a href="https://github.com/SCAI-Lab/healthcare_msgs" target="_blank" rel="noopener">EMG.msg</a></td></tr>
+            <tr><td>Electrooculogram (EOG)</td><td><a href="https://github.com/SCAI-Lab/ord_schemas/tree/main/schema" target="_blank" rel="noopener">eog_schema.json</a></td><td><a href="https://github.com/SCAI-Lab/healthcare_msgs" target="_blank" rel="noopener">EOG.msg</a></td></tr>
+            <tr><td>Impedance Cardiogram (ICG)</td><td><a href="https://github.com/SCAI-Lab/ord_schemas/tree/main/schema" target="_blank" rel="noopener">icg_schema.json</a></td><td><a href="https://github.com/SCAI-Lab/healthcare_msgs" target="_blank" rel="noopener">ICG.msg</a></td></tr>
+            <tr><td>Photoplethysmogram (PPG)</td><td><a href="https://github.com/SCAI-Lab/ord_schemas/tree/main/schema" target="_blank" rel="noopener">ppg_schema.json</a></td><td><a href="https://github.com/SCAI-Lab/healthcare_msgs" target="_blank" rel="noopener">PPG.msg</a></td></tr>
           </tbody>
         </table>
       </section>
 
       <section id="bcg">
-        <h2>Ballistocardiogram (BCG) — Schema Reference</h2>
+        <h2>BCG — Schema Reference</h2>
         <p>
           The BCG schema represents waveform data from a specific lead with signal quality and temporal context.
           The BCGInfo schema captures metadata about the sensor and acquisition parameters.
-          Together they form a pair: every BCG data message references a BCGInfo session via <code>session_id</code>.
+          Every BCG data message references a BCGInfo session via <code>session_id</code>.
         </p>
 
         <h3>JSON Schemas</h3>
@@ -139,71 +137,42 @@
   },
   "properties": {
     "device_info": { "$ref": "#/definitions/device_info" },
-    "session_id": {
-      "type": "string",
-      "description": "Session identifier linking to BCG data"
-    },
-    "sampling_frequency": {
-      "type": "number",
-      "minimum": 0,
-      "description": "Sampling frequency in Hz"
-    },
-    "window_size_samples": {
-      "type": "integer",
-      "minimum": 1,
-      "description": "Number of samples per BCG message"
-    },
-    "quality_window_size_samples": {
-      "type": "integer",
-      "minimum": 1,
-      "description": "Number of samples per quality value"
-    },
+    "session_id":  { "type": "string" },
+    "sampling_frequency":          { "type": "number", "minimum": 0 },
+    "window_size_samples":         { "type": "integer", "minimum": 1 },
+    "quality_window_size_samples": { "type": "integer", "minimum": 1 },
     "units": {
       "type": "string",
-      "enum": ["UNIT_UNKNOWN", "UNIT_MV", "UNIT_UV", "UNIT_COUNTS", "UNIT_M_S2", "UNIT_NEWTON"]
+      "enum": ["UNIT_UNKNOWN","UNIT_MV","UNIT_UV","UNIT_COUNTS","UNIT_M_S2","UNIT_NEWTON"]
     },
-    "gain": {
-      "type": "number",
-      "description": "Multiplicative factor (e.g. µV/count); set to 1.0 if signal is already scaled"
-    },
-    "adc_resolution": {
-      "type": "integer",
-      "minimum": 1,
-      "maximum": 32,
-      "description": "ADC resolution in bits"
-    },
+    "gain":           { "type": "number" },
+    "adc_resolution": { "type": "integer", "minimum": 1, "maximum": 32 },
     "sensor_placement": {
       "type": "string",
-      "enum": [
-        "PLACEMENT_UNKNOWN", "PLACEMENT_CHEST", "PLACEMENT_BACK", "PLACEMENT_MATTRESS",
-        "PLACEMENT_CHAIR", "PLACEMENT_ANKLE", "PLACEMENT_FOOT", "PLACEMENT_WRIST",
-        "PLACEMENT_ARM", "PLACEMENT_DESK", "PLACEMENT_CLOTHING", "PLACEMENT_CUSTOM"
-      ]
+      "enum": ["PLACEMENT_UNKNOWN","PLACEMENT_CHEST","PLACEMENT_BACK","PLACEMENT_MATTRESS",
+               "PLACEMENT_CHAIR","PLACEMENT_ANKLE","PLACEMENT_FOOT","PLACEMENT_WRIST",
+               "PLACEMENT_ARM","PLACEMENT_DESK","PLACEMENT_CLOTHING","PLACEMENT_CUSTOM"]
     },
     "sensing_direction": {
       "type": "string",
-      "enum": [
-        "DIRECTION_UNKNOWN", "DIRECTION_DORSO_VENTRAL", "DIRECTION_LONGITUDINAL",
-        "DIRECTION_MEDIO_LATERAL", "DIRECTION_CUSTOM"
-      ]
+      "enum": ["DIRECTION_UNKNOWN","DIRECTION_DORSO_VENTRAL","DIRECTION_LONGITUDINAL",
+               "DIRECTION_MEDIO_LATERAL","DIRECTION_CUSTOM"]
     },
     "sensing_modality": {
       "type": "string",
-      "enum": [
-        "MODALITY_UNKNOWN", "MODALITY_PIEZOELECTRIC_FILM", "MODALITY_FORCEPLATE",
-        "MODALITY_ACCELEROMETER", "MODALITY_PIEZOELECTRIC_CRYSTAL", "MODALITY_CUSTOM"
-      ]
+      "enum": ["MODALITY_UNKNOWN","MODALITY_PIEZOELECTRIC_FILM","MODALITY_FORCEPLATE",
+               "MODALITY_ACCELEROMETER","MODALITY_PIEZOELECTRIC_CRYSTAL","MODALITY_CUSTOM"]
     },
     "measurement_system": {
       "type": "string",
-      "enum": ["SYSTEM_UNKNOWN", "SYSTEM_STARR", "SYSTEM_NICKERSON", "SYSTEM_DOCK", "SYSTEM_CUSTOM"]
+      "enum": ["SYSTEM_UNKNOWN","SYSTEM_STARR","SYSTEM_NICKERSON","SYSTEM_DOCK","SYSTEM_CUSTOM"]
     },
     "filter": { "$ref": "#/definitions/filter_base" }
   },
   "required": [
-    "device_info", "session_id", "sampling_frequency", "window_size_samples",
-    "quality_window_size_samples", "units", "gain", "adc_resolution",
-    "sensor_placement", "sensing_direction", "sensing_modality", "measurement_system"
+    "device_info","session_id","sampling_frequency","window_size_samples",
+    "quality_window_size_samples","units","gain","adc_resolution",
+    "sensor_placement","sensing_direction","sensing_modality","measurement_system"
   ]
 }</code></pre>
         </details>
@@ -215,9 +184,7 @@
           <pre><code>std_msgs/Header header
 
 string session_id                     # Match BCGInfo's session_id
-
 uint16 sample_size
-
 float32[] bcg                         # Raw or filtered BCG values
 float32[] signal_quality              # 0 (poor) to 1 (excellent)</code></pre>
         </details>
@@ -225,63 +192,38 @@ float32[] signal_quality              # 0 (poor) to 1 (excellent)</code></pre>
         <details>
           <summary>BCGInfo.msg</summary>
           <pre><code>DeviceInfo device_info
-
 string session_id
 
 float32 sampling_frequency            # Hz
-uint32 window_size_samples            # Samples per BCG.msg
-uint32 quality_window_size_samples    # Samples per quality value
+uint32 window_size_samples
+uint32 quality_window_size_samples
 
-# Units
-uint8 UNIT_UNKNOWN = 0
-uint8 UNIT_MV      = 1               # Millivolts
-uint8 UNIT_UV      = 2               # Microvolts
-uint8 UNIT_COUNTS  = 3               # Raw ADC counts
-uint8 UNIT_M_S2    = 4               # m/s²
-uint8 UNIT_NEWTON  = 5               # Newtons
+uint8 UNIT_UNKNOWN=0
+uint8 UNIT_MV=1  uint8 UNIT_UV=2  uint8 UNIT_COUNTS=3
+uint8 UNIT_M_S2=4  uint8 UNIT_NEWTON=5
 uint8 units
 
-float32 gain                          # Multiplicative factor
-uint8   adc_resolution                # Bits (e.g. 12, 16)
+float32 gain
+uint8   adc_resolution
 
-# Sensor Placement
-uint8 PLACEMENT_UNKNOWN  = 0
-uint8 PLACEMENT_CHEST    = 1
-uint8 PLACEMENT_BACK     = 2
-uint8 PLACEMENT_MATTRESS = 3
-uint8 PLACEMENT_CHAIR    = 4
-uint8 PLACEMENT_ANKLE    = 5
-uint8 PLACEMENT_FOOT     = 6
-uint8 PLACEMENT_WRIST    = 7
-uint8 PLACEMENT_ARM      = 8
-uint8 PLACEMENT_DESK     = 9
-uint8 PLACEMENT_CLOTHING = 10
-uint8 PLACEMENT_CUSTOM   = 255
+uint8 PLACEMENT_UNKNOWN=0  uint8 PLACEMENT_CHEST=1  uint8 PLACEMENT_BACK=2
+uint8 PLACEMENT_MATTRESS=3  uint8 PLACEMENT_CHAIR=4  uint8 PLACEMENT_ANKLE=5
+uint8 PLACEMENT_FOOT=6  uint8 PLACEMENT_WRIST=7  uint8 PLACEMENT_ARM=8
+uint8 PLACEMENT_DESK=9  uint8 PLACEMENT_CLOTHING=10  uint8 PLACEMENT_CUSTOM=255
 uint8 sensor_placement
 
-# Sensing Direction
-uint8 DIRECTION_UNKNOWN        = 0
-uint8 DIRECTION_DORSO_VENTRAL  = 1   # Front to back
-uint8 DIRECTION_LONGITUDINAL   = 2   # Head to toe
-uint8 DIRECTION_MEDIO_LATERAL  = 3   # Side to side
-uint8 DIRECTION_CUSTOM         = 255
+uint8 DIRECTION_UNKNOWN=0  uint8 DIRECTION_DORSO_VENTRAL=1
+uint8 DIRECTION_LONGITUDINAL=2  uint8 DIRECTION_MEDIO_LATERAL=3
+uint8 DIRECTION_CUSTOM=255
 uint8 sensing_direction
 
-# Sensing Modality
-uint8 MODALITY_UNKNOWN              = 0
-uint8 MODALITY_PIEZOELECTRIC_FILM   = 1
-uint8 MODALITY_FORCEPLATE           = 2
-uint8 MODALITY_ACCELEROMETER        = 3
-uint8 MODALITY_PIEZOELECTRIC_CRYSTAL= 4
-uint8 MODALITY_CUSTOM               = 255
+uint8 MODALITY_UNKNOWN=0  uint8 MODALITY_PIEZOELECTRIC_FILM=1
+uint8 MODALITY_FORCEPLATE=2  uint8 MODALITY_ACCELEROMETER=3
+uint8 MODALITY_PIEZOELECTRIC_CRYSTAL=4  uint8 MODALITY_CUSTOM=255
 uint8 sensing_modality
 
-# Measurement System
-uint8 SYSTEM_UNKNOWN   = 0
-uint8 SYSTEM_STARR     = 1
-uint8 SYSTEM_NICKERSON = 2
-uint8 SYSTEM_DOCK      = 3
-uint8 SYSTEM_CUSTOM    = 255
+uint8 SYSTEM_UNKNOWN=0  uint8 SYSTEM_STARR=1  uint8 SYSTEM_NICKERSON=2
+uint8 SYSTEM_DOCK=3  uint8 SYSTEM_CUSTOM=255
 uint8 measurement_system
 
 FilterBase filter</code></pre>
@@ -294,10 +236,10 @@ FilterBase filter</code></pre>
   <footer>
     <div class="footer-logos">
       <img src="assets/images/scai_logo.png" alt="SCAI Lab Logo" />
-      <img src="assets/images/dart_logo.png" alt="DART Logo" />
       <img src="assets/images/ethz_logo.png" alt="ETH Zurich Logo" class="ethz-logo" />
     </div>
-    <p>© 2025 ETH Zurich – MEDWEAR Project | Contact: diego.paez@scai.ethz.ch</p>
+    <p>© 2025 ETH Zurich – MEDWEAR Project | Contact: diego.paez@scai.ethz.ch · monica.perezserrano@hest.ethz.ch</p>
   </footer>
+
 </body>
 </html>

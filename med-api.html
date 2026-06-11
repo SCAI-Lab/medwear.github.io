@@ -9,25 +9,14 @@
 </head>
 <body>
   <header>
-    <div class="header-upper">
-        <!-- <img src="assets/images/medwear_logo.png" alt="MEDWEAR Logo" class="logo" /> -->
-    </div>
-    <div class="header-lower">
-        <h1>MEDWEAR</h1>
-        <p>Open, Interoperable Standards for Medical Wearables</p>
-    </div>
-    <hr class="header-separator" />
-    <div class="under-construction-banner">
-        🚧 This website is currently under construction. Some content may be incomplete. 🚧
-    </div>
+    <a href="index.html" class="header-brand">MEDWEAR</a>
     <nav>
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
-      <a href="standards.html">Standards</a>
       <a href="documentation.html">Documentation</a>
       <a href="schemas.html">Schemas</a>
-      <a href="contribute.html">Contribute</a>
       <a href="med-api.html" class="active">MED-API</a>
+      <a href="contribute.html">Contribute</a>
     </nav>
   </header>
 
@@ -376,90 +365,6 @@ docker compose -f docker-compose.medwear-minimal.yml down</code></pre>
       </table>
     </section>
 
-    <section>
-      <h2>CARDAMON Integration</h2>
-      <p>
-        The MEDWEAR platform is integrated with the <strong>CARDAMON</strong> study. A dedicated conversion script
-        imports CARDAMON study wearable data (Corsano wristband recordings) directly into the MEDWEAR database.
-      </p>
-
-      <h3>Directory structure</h3>
-      <pre><code>&lt;cardamon-root&gt;/
-  0/
-    2/
-      &lt;participantID&gt;/          ← patient ID (integer folder name)
-        &lt;timestampFolder&gt;/
-          *.txt                 ← ECG (JSON-log lines, 128 Hz)
-          Corsano_bioz/         ← .wiff files (bioz + acc) + Emography.csv
-          Corsano_ppg/          ← .wiff files (ppg + acc)</code></pre>
-
-      <h3>Import full CARDAMON tree</h3>
-      <pre><code>python medwear_med_api/scripts/cardamon_to_medwear.py \
-  --cardamon-root /path/to/CARDAMON \
-  --device-id corsano-cw \
-  --api-url https://localhost \
-  --token &lt;JWT&gt; \
-  --project-id medwear_cardamon</code></pre>
-
-      <h3>Import a single participant</h3>
-      <pre><code>python medwear_med_api/scripts/cardamon_to_medwear.py \
-  --cardamon-root /path/to/CARDAMON \
-  --participant 123456 \
-  --device-id corsano-cw \
-  --token &lt;JWT&gt; \
-  --project-id medwear_cardamon</code></pre>
-
-      <h3>Signal mappings</h3>
-      <table>
-        <thead>
-          <tr><th>Source</th><th>MEDWEAR signal type</th><th>Notes</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>*.txt</td><td>ECG</td><td>JSON-log format, 128 Hz</td></tr>
-          <tr><td>Corsano_bioz/*.wiff</td><td>EDA + IMU</td><td>Parsed by mmt_parse_wiff.py</td></tr>
-          <tr><td>Corsano_ppg/*.wiff</td><td>PPG + IMU</td><td>Parsed by mmt_parse_wiff.py</td></tr>
-          <tr><td>Corsano_bioz/Emography.csv</td><td>EDA</td><td>Skin conductance</td></tr>
-          <tr><td>ppg2_*.csv</td><td>PPG</td><td>Grouped by chunk_index</td></tr>
-          <tr><td>acc.csv</td><td>IMU</td><td>X, Y, Z axes as separate batches</td></tr>
-          <tr><td>bioz.csv</td><td>EDA</td><td>Bioimpedance</td></tr>
-          <tr><td>rr_interval.csv</td><td>ECG</td><td>RR intervals in ms</td></tr>
-          <tr><td>temperature.csv, activity.csv, sleep.csv, questionnaire*, adl*</td><td>—</td><td>Raw file upload to MinIO</td></tr>
-        </tbody>
-      </table>
-    </section>
-
-    <section>
-      <h2>CLAID Server Ingestion</h2>
-      <p>
-        The CLAID server (<code>172.20.83.11</code>) receives live Corsano data from phones via the CLAID framework.
-        Data lands at: <code>/home/scai/CLAID-Server/receivedFiles/cardio/{phone_name}/{study_id}/{clinic_id}/{participant_id}/</code>
-      </p>
-      <details>
-        <summary>Run directly on the server</summary>
-        <pre><code>python medwear_med_api/scripts/claid_to_medwear.py \
-  --claid-root /home/scai/CLAID-Server/receivedFiles \
-  --device-id corsano-cw \
-  --api-url https://172.20.83.11 \
-  --token &lt;JWT&gt; \
-  --project-id medwear_cardamon</code></pre>
-      </details>
-      <details>
-        <summary>Run locally after rsync</summary>
-        <pre><code># Sync data from server (SPZ VPN must be active)
-rsync -avz --progress \
-  scai@172.20.83.11:/home/scai/CLAID-Server/receivedFiles/cardio/ \
-  /local/claid_data/cardio/
-
-# Or use --sync flag (calls rsync automatically)
-python medwear_med_api/scripts/claid_to_medwear.py \
-  --claid-root /local/claid_data \
-  --sync \
-  --device-id corsano-cw \
-  --api-url https://&lt;medwear-server&gt; \
-  --token &lt;JWT&gt; \
-  --project-id medwear_cardamon</code></pre>
-      </details>
-    </section>
 
     <section>
       <h2>ROS 2 Real-Time Bridge</h2>
@@ -558,10 +463,9 @@ curl -sk -H "Authorization: Bearer $TOKEN" \
 <footer>
   <div class="footer-logos">
     <img src="assets/images/scai_logo.png" alt="SCAI Lab Logo" />
-    <img src="assets/images/dart_logo.png" alt="DART Logo" />
     <img src="assets/images/ethz_logo.png" alt="ETH Zurich Logo" class="ethz-logo" />
   </div>
-  <p>© 2025 ETH Zurich – MEDWEAR Project | Contact: diego.paez@scai.ethz.ch</p>
+  <p>© 2025 ETH Zurich – MEDWEAR Project | Contact: diego.paez@scai.ethz.ch · monica.perezserrano@hest.ethz.ch</p>
 </footer>
 </body>
 </html>
