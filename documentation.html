@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -8,21 +7,19 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="favicon.ico" />
 </head>
-
 <body>
   <header>
     <div class="header-upper">
-        <!-- <img src="assets/images/medwear_logo.png" alt="MEDWEAR Logo" class="logo" /> -->
+      <!-- <img src="assets/images/medwear_logo.png" alt="MEDWEAR Logo" class="logo" /> -->
     </div>
     <div class="header-lower">
-        <h1>MEDWEAR</h1>
-        <p>Open, Interoperable Standards for Medical Wearables</p>
+      <h1>MEDWEAR</h1>
+      <p>Open, Interoperable Standards for Medical Wearables</p>
     </div>
     <hr class="header-separator" />
     <div class="under-construction-banner">
-        🚧 This website is currently under construction. Some content may be incomplete. 🚧
+      🚧 This website is currently under construction. Some content may be incomplete. 🚧
     </div>
-  </div>
     <nav>
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
@@ -34,20 +31,29 @@
     </nav>
   </header>
 
-<div class="content-container">
-  <main>
-    <section>
-      <h2>Usage Examples</h2>
+  <div class="content-container">
+    <main>
 
-      <h3>Using MEDWEAR JSON Schemas</h3>
-      <p>The schemas define the data structure for wearable sensor data. You can validate your data against these schemas to ensure interoperability.</p>
+      <section>
+        <h2>Installation</h2>
+        <p>Clone the MEDWEAR schema repository (forked from Open mHealth) from GitHub:</p>
+        <pre><code>git clone https://github.com/SCAI-Lab/ord_schemas
+# Follow the instructions in README.md for environment setup</code></pre>
+      </section>
 
-      <h4>Example: ECG Data JSON</h4>
-      <pre><code>{
+      <section>
+        <h2>Quick Start</h2>
+
+        <h3>JSON Schema structure</h3>
+        <p>
+          Each MEDWEAR schema defines a data structure for a physiological signal.
+          Here is a minimal ECG data example:
+        </p>
+        <pre><code>{
   "schema_id": "org.medwear.biosignal.ecg",
   "version": "1.0",
   "data": {
-    "ecg": [0.12, 0.15, 0.11, ...],
+    "ecg": [0.12, 0.15, 0.11],
     "sample_rate": 250,
     "units": "mV"
   },
@@ -57,88 +63,93 @@
   }
 }</code></pre>
 
-      <h3>Loading MEDWEAR Schemas in Python</h3>
-      <pre><code>import json
+        <h3>Validating data in Python</h3>
+        <p>Use the <code>jsonschema</code> library to validate your data against a MEDWEAR schema:</p>
+        <pre><code>import json
 from jsonschema import validate
 
-with open('ecg_schema.json') as schema_file:
-    schema = json.load(schema_file)
+with open('ecg_schema.json') as f:
+    schema = json.load(f)
 
-with open('ecg_data.json') as data_file:
-    data = json.load(data_file)
+with open('ecg_data.json') as f:
+    data = json.load(f)
 
 validate(instance=data, schema=schema)
-print("Data is valid according to MEDWEAR ECG schema.")</code></pre>
+print("Data is valid.")</code></pre>
+      </section>
 
-      <h3>Further Resources</h3>
-      <ul>
-        <li><a href="https://json-schema.org/" target="_blank" rel="noopener">JSON Schema documentation</a></li>
-        <li><a href="https://github.com/SCAI-Lab/ord_schemas" target="_blank" rel="noopener">MEDWEAR GitHub Repository</a></li>
-        <li><a href="schemas.html">Explore MEDWEAR Schemas (new page)</a></li>
-      </ul>
-    </section>
+      <section>
+        <h2>Integration Guides</h2>
 
-    <section>
-      <h2>Documentation & Resources</h2>
+        <h3>JSON Schemas</h3>
+        <p>
+          MEDWEAR schemas extend Open mHealth to support raw, high-frequency sensor formats.
+          Download individual schemas from the <a href="schemas.html">Schemas page</a> or browse the full set on
+          <a href="https://github.com/SCAI-Lab/ord_schemas" target="_blank" rel="noopener">GitHub</a>.
+        </p>
 
-      <h3>📚 User Guides</h3>
-      <ul>
-        <li><a href="#schemas">Using MEDWEAR Data Schemas</a></li>
-        <li><a href="#ros">ROS 2 Integration Guide</a></li>
-        <li><a href="#conversion">Data Conversion Workflow</a></li>
-      </ul>
+        <h3>ROS 2 Messages</h3>
+        <p>
+          ROS 2 <code>.msg</code> definitions are available for integration with healthcare robots and assistive devices.
+          The <code>healthcare_msgs</code> package supports ECG, BCG, PPG, EEG, EDA, IMU, HR, and HRV.
+        </p>
+        <p>
+          <a href="https://github.com/SCAI-Lab/healthcare_msgs" target="_blank" rel="noopener">View the ROS 2 message package on GitHub</a>
+        </p>
 
-      <h3 id="schemas">📄 JSON Schemas</h3>
-      <p>
-        Our schemas extend Open mHealth to include raw sensor formats. <br />
-        <a href="schemas.html">View all schemas on a dedicated page</a> | <a href="https://github.com/SCAI-Lab/ord_schemas" target="_blank" rel="noopener">View on GitHub</a>
-      </p>
+        <h3>Conversion Tools</h3>
+        <p>
+          Command-line tools and notebooks are available to convert CSV, JSON, and raw wearable files
+          into MEDWEAR-compliant format.
+        </p>
+        <p>
+          <a href="https://github.com/medwear/conversion-tools" target="_blank" rel="noopener">Explore conversion tools on GitHub</a>
+        </p>
 
-      <h3 id="ros">🤖 ROS 2 Messages</h3>
-      <p>
-        Download ROS 2 `.msg` definitions for integration with healthcare robots and assistive devices.<br />
-        <a href="https://github.com/SCAI-Lab/healthcare_msgs" target="_blank" rel="noopener">View ROS 2 message package</a>
-      </p>
+        <h3>MED-API</h3>
+        <p>
+          For server-side ingestion, querying, and management of wearable data, see the
+          <a href="med-api.html">MED-API documentation</a>.
+          It provides a REST API backed by InfluxDB, PostgreSQL, and MinIO.
+        </p>
+      </section>
 
-      <h3 id="conversion">🔁 Conversion Tools</h3>
-      <p>
-        Command-line tools and notebooks to convert CSV/JSON/wearable data to MEDWEAR-compliant format.<br />
-        <a href="https://github.com/medwear/conversion-tools" target="_blank" rel="noopener">Explore conversion tools</a>
-      </p>
+      <section>
+        <h2>Resources</h2>
 
-      <h3>📊 Example Datasets</h3>
-      <p>
-        Sample anonymized datasets for development and testing.<br />
-        <a href="https://github.com/medwear/sample-data" target="_blank" rel="noopener">Download examples</a>
-      </p>
+        <h3>Example Datasets</h3>
+        <p>
+          Sample anonymized datasets for development and testing.
+          <a href="https://github.com/medwear/sample-data" target="_blank" rel="noopener">Download from GitHub</a>.
+        </p>
 
-      <h3>🧠 Publications</h3>
-      <ul>
-        <li>"MEDWEAR: Data Standardization of Wearable Devices for Healthcare Applications" (in preparation)</li>
-        <li>Symposium [<a href="https://scai.ethz.ch/symposium-2025.html" target="_blank" rel="noopener">PDF</a>]</li>
-      </ul>
+        <h3>Publications</h3>
+        <ul>
+          <li>"MEDWEAR: Data Standardization of Wearable Devices for Healthcare Applications" (in preparation)</li>
+          <li>Symposium proceedings — <a href="https://scai.ethz.ch/symposium-2025.html" target="_blank" rel="noopener">PDF</a></li>
+        </ul>
 
-      <h3>🛠️ Contribute</h3>
-      <p>
-        Found a bug or want to add support for new sensors? <br />
-        See our <a href="contribute.html" target="_blank" rel="noopener">contributing guide</a>.
-      </p>
+        <h3>External References</h3>
+        <ul>
+          <li><a href="https://json-schema.org/" target="_blank" rel="noopener">JSON Schema documentation</a></li>
+          <li><a href="https://standards.ieee.org/standard/1752-2021.html" target="_blank" rel="noopener">IEEE 1752-2021 Standard</a></li>
+          <li><a href="http://www.openmhealth.org" target="_blank" rel="noopener">Open mHealth</a></li>
+        </ul>
 
-      <h3>❓ FAQs</h3>
-      <p>
-        Coming soon: Frequently asked questions about MEDWEAR schemas and implementation.
-      </p>
-    </section>
-  </main>
-</div>
+        <h3>FAQs</h3>
+        <p>Coming soon: Frequently asked questions about MEDWEAR schemas and implementation.</p>
+      </section>
+
+    </main>
+  </div>
+
   <footer>
     <div class="footer-logos">
-      <img src="assets/images/scai_logo.png" alt="SCAI Lab Logo" class="logo" />
-      <img src="assets/images/dart_logo.png" alt="DART Logo" class="logo" />
-      <img src="assets/images/ethz_logo.png" alt="ETH Zurich Logo" class="logo" />
+      <img src="assets/images/scai_logo.png" alt="SCAI Lab Logo" />
+      <img src="assets/images/dart_logo.png" alt="DART Logo" />
+      <img src="assets/images/ethz_logo.png" alt="ETH Zurich Logo" class="ethz-logo" />
     </div>
     <p>© 2025 ETH Zurich – MEDWEAR Project | Contact: diego.paez@scai.ethz.ch</p>
   </footer>
 </body>
-
 </html>

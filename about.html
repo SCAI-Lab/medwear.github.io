@@ -3,22 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About - MEDWEAR</title>
+  <title>About | MEDWEAR</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="favicon.ico" />
 </head>
 <body>
   <header>
     <div class="header-upper">
-        <!-- <img src="assets/images/medwear_logo.png" alt="MEDWEAR Logo" class="logo" /> -->
+      <!-- <img src="assets/images/medwear_logo.png" alt="MEDWEAR Logo" class="logo" /> -->
     </div>
     <div class="header-lower">
-        <h1>MEDWEAR</h1>
-        <p>Open, Interoperable Standards for Medical Wearables</p>
+      <h1>MEDWEAR</h1>
+      <p>Open, Interoperable Standards for Medical Wearables</p>
     </div>
     <hr class="header-separator" />
     <div class="under-construction-banner">
-        🚧 This website is currently under construction. Some content may be incomplete. 🚧
+      🚧 This website is currently under construction. Some content may be incomplete. 🚧
     </div>
     <nav>
       <a href="index.html">Home</a>
@@ -30,64 +30,88 @@
       <a href="med-api.html">MED-API</a>
     </nav>
   </header>
-<div class="content-container">
-  <main>
-    <section>
-      <h2>About the Project</h2>
-      <p>Wearable devices are rapidly transforming healthcare by enabling continuous, real-time monitoring of patients outside clinical settings. MEDWEAR is a community-driven initiative to create open standards for structuring and exchanging high-frequency data from medical wearables.</p>
-      <p>We aim to address the fragmentation of the digital health ecosystem by building upon existing standards—such as Open mHealth, HL7 FHIR, IEEE 11073, and openEHR—to define lightweight, extensible schemas suitable for modern sensing devices and middleware systems like ROS 2 and MQTT.</p>
-    </section>
 
-    <section>
-      <h2>Why Standardization Matters</h2>
-      <p>Although wearable technologies have become integral to modern healthcare—supporting use cases from chronic disease management to preventive care—the lack of common data formats hinders integration with EHRs, AI systems, and clinical decision tools. Over 80% of healthcare data remains unstructured and difficult to reuse.</p>
-      <p>Standardizing wearable data supports interoperability, clinical utility, patient safety, and research reproducibility. MEDWEAR provides schemas and APIs that support high-frequency data, real-time streaming, and device-agnostic modeling to facilitate broad adoption and integration.</p>
-    </section>
+  <div class="content-container">
+    <main>
 
-    <section>
-      <h2>Collaborating Entities</h2>
-      <ul>
-        <li>ETH Zurich - Open Research Data Initiative</li>
-        <li>SCAI Lab, ETH Zurich</li>
-        <li>DART Lab, Lake Lucerne Institute</li>
-        <li>UZH</li>
-        <li>SUPSI</li>
-      </ul>
-    </section>
+      <section>
+        <h2>About the Project</h2>
+        <p>
+          Wearable devices are rapidly transforming healthcare by enabling continuous, real-time monitoring
+          of patients outside clinical settings. MEDWEAR is a community-driven initiative to create open
+          standards for structuring and exchanging high-frequency data from medical wearables.
+        </p>
+        <p>
+          We aim to address the fragmentation of the digital health ecosystem by building upon existing
+          standards — such as Open mHealth, HL7 FHIR, IEEE 11073, and openEHR — to define lightweight,
+          extensible schemas suitable for modern sensing devices and middleware systems like ROS 2 and MQTT.
+        </p>
+      </section>
 
-    <section>
-      <h2>Challenges in Wearable Health Data</h2>
-      <ul>
-        <li>Fragmented systems with incompatible formats</li>
-        <li>Lack of EHR integration</li>
-        <li>Data privacy and regulatory constraints</li>
-        <li>Low patient engagement and digital divide</li>
-        <li>Limited clinical adoption and ROI evidence</li>
-        <li>Barriers to real-time, high-frequency data streaming</li>
-      </ul>
-    </section>
+      <section>
+        <h2>Why Standardization Matters</h2>
+        <p>
+          Although wearable technologies have become integral to modern healthcare — supporting use cases
+          from chronic disease management to preventive care — the lack of common data formats hinders
+          integration with EHRs, AI systems, and clinical decision tools. Over 80% of healthcare data
+          remains unstructured and difficult to reuse.
+        </p>
+        <p>
+          Standardizing wearable data supports interoperability, clinical utility, patient safety, and
+          research reproducibility. MEDWEAR provides schemas and APIs that support high-frequency data,
+          real-time streaming, and device-agnostic modeling to facilitate broad adoption and integration.
+        </p>
+      </section>
 
-    <section>
-      <h2>Comparative Overview of Standards</h2>
-      <p>We evaluate four key initiatives that inspire the MEDWEAR schema design:</p>
+      <section>
+        <h2>Collaborating Institutions</h2>
+        <ul>
+          <li>ETH Zurich — Open Research Data Initiative</li>
+          <li>SCAI Lab, ETH Zurich</li>
+          <li>DART Lab, Lake Lucerne Institute</li>
+          <li>University of Zurich (UZH)</li>
+          <li>SUPSI</li>
+        </ul>
+      </section>
 
-    <ul>
-        <li><strong>Open mHealth</strong>: Simple, modular JSON schemas for structured, contextual data.</li>
-        <li><strong>HL7 FHIR</strong>: Granular RESTful resources widely used in clinical settings.</li>
-        <li><strong>IEEE 11073-PHD</strong>: Device-specific standards for personal health devices, well-suited for discrete measures.</li>
-        <li><strong>openEHR</strong>: Robust clinical models with semantic precision.</li>
-    </ul>
+      <section>
+        <h2>Challenges in Wearable Health Data</h2>
+        <ul>
+          <li>Fragmented systems with incompatible data formats</li>
+          <li>Lack of EHR integration</li>
+          <li>Data privacy and regulatory constraints</li>
+          <li>Low patient engagement and digital divide</li>
+          <li>Limited clinical adoption and ROI evidence</li>
+          <li>Barriers to real-time, high-frequency data streaming</li>
+        </ul>
+      </section>
 
-    </section>
-  </main>
-</div>
-<footer>
-  <div class="footer-logos">
-    <img src="assets/images/scai_logo.png" alt="SCAI Lab Logo" class="logo" style="height: 40px; width: auto; margin-right: 10px;" />
-    <img src="assets/images/dart_logo.png" alt="DART Logo" class="logo" style="height: 40px; width: auto; margin-right: 10px;" />
-    <img src="assets/images/ethz_logo.png" alt="ETH Zurich Logo" class="logo" style="height: 20px; width: auto; margin-right: 10px;" />
+      <section>
+        <h2>Comparative Overview of Existing Standards</h2>
+        <p>MEDWEAR builds on top of four key initiatives:</p>
+        <table>
+          <thead>
+            <tr><th>Standard</th><th>Description</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Open mHealth</strong></td><td>Simple, modular JSON schemas for structured, contextual health data.</td></tr>
+            <tr><td><strong>HL7 FHIR</strong></td><td>Granular RESTful resources widely used in clinical settings.</td></tr>
+            <tr><td><strong>IEEE 11073-PHD</strong></td><td>Device-specific standards for personal health devices; suited for discrete measures.</td></tr>
+            <tr><td><strong>openEHR</strong></td><td>Robust clinical models with semantic precision.</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+    </main>
   </div>
-  <p>© 2025 ETH Zurich – MEDWEAR Project | Contact: diego.paez@scai.ethz.ch</p>
-</footer>
+
+  <footer>
+    <div class="footer-logos">
+      <img src="assets/images/scai_logo.png" alt="SCAI Lab Logo" />
+      <img src="assets/images/dart_logo.png" alt="DART Logo" />
+      <img src="assets/images/ethz_logo.png" alt="ETH Zurich Logo" class="ethz-logo" />
+    </div>
+    <p>© 2025 ETH Zurich – MEDWEAR Project | Contact: diego.paez@scai.ethz.ch</p>
+  </footer>
 </body>
 </html>

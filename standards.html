@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,19 +7,18 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="favicon.ico" />
 </head>
-
 <body>
   <header>
     <div class="header-upper">
-        <!-- <img src="assets/images/medwear_logo.png" alt="MEDWEAR Logo" class="logo" /> -->
+      <!-- <img src="assets/images/medwear_logo.png" alt="MEDWEAR Logo" class="logo" /> -->
     </div>
     <div class="header-lower">
-        <h1>MEDWEAR</h1>
-        <p>Open, Interoperable Standards for Medical Wearables</p>
+      <h1>MEDWEAR</h1>
+      <p>Open, Interoperable Standards for Medical Wearables</p>
     </div>
     <hr class="header-separator" />
     <div class="under-construction-banner">
-        🚧 This website is currently under construction. Some content may be incomplete. 🚧
+      🚧 This website is currently under construction. Some content may be incomplete. 🚧
     </div>
     <nav>
       <a href="index.html">Home</a>
@@ -33,50 +31,92 @@
     </nav>
   </header>
 
-<div class="content-container">
-  <main>
-    <h2>Standards and Schemas</h2>
-    <p>
-      The MEDWEAR standard schemas have been generated following the 
-      <a href="https://standards.ieee.org/standard/1752-2021.html" target="_blank" rel="noopener">IEEE 1752 Standard</a> 
-      and are compatible with the <a href="http://www.openmhealth.org" target="_blank" rel="noopener">Open mHealth</a> framework.
-    </p>
+  <div class="content-container">
+    <main>
 
-    <section>
-      <h3>Schema Repository</h3>
-      <p>
-        All MEDWEAR JSON schemas are hosted on our 
-        <a href="https://github.com/SCAI-Lab/ord_schemas" target="_blank" rel="noopener">GitHub repository</a>. 
-        These schemas define data structures for physiological signals and metadata to ensure interoperability across devices and platforms.
-      </p>
-    </section>
+      <section>
+        <h2>Standards</h2>
+        <p>
+          The MEDWEAR schemas are generated following the
+          <a href="https://standards.ieee.org/standard/1752-2021.html" target="_blank" rel="noopener">IEEE 1752-2021 Standard</a>
+          and are compatible with the <a href="http://www.openmhealth.org" target="_blank" rel="noopener">Open mHealth</a> framework.
+          They extend both to support high-frequency, raw sensor data streams required by modern wearable devices.
+        </p>
+      </section>
 
-    <section>
-      <h3>Schema Preview</h3>
-      <p>Here are some examples of key schemas:</p>
-      <ul>
-        <li><a href="https://github.com/SCAI-Lab/ord_schemas/blob/main/schema/ros4hc/bcg-info-1.x.json" target="_blank" rel="noopener">BCG Info Schema</a></li>
-        <li><a href="https://github.com/SCAI-Lab/ord_schemas/blob/main/schema/ros4hc/bcg-1.x.json" target="_blank" rel="noopener">BCG Schema</a></li>
-      </ul>
-      <p>Each schema is designed to be modular and extensible for multiple sensor types and signals.</p>
-    </section>
+      <section>
+        <h2>Design Principles</h2>
+        <ul>
+          <li><strong>Vendor-agnostic</strong> — no dependency on proprietary device formats.</li>
+          <li><strong>FAIR</strong> — Findable, Accessible, Interoperable, and Reusable.</li>
+          <li><strong>Modular</strong> — signal schemas are self-contained and composable.</li>
+          <li><strong>Middleware-ready</strong> — definitions ship as both JSON Schemas and ROS 2 <code>.msg</code> files.</li>
+          <li><strong>Extensible</strong> — new signal types can be added without breaking existing consumers.</li>
+        </ul>
+      </section>
 
-    <section>
-      <h3>About the Standards</h3>
-      <p>
-        The MEDWEAR standards build on top of Open mHealth, aiming to provide a unified, device-agnostic approach to wearable health data representation.
-        This approach supports continuous, high-frequency data streams while maintaining compatibility with clinical and research workflows.
-      </p>
-    </section>
-  </main>
-</div>
-<footer>
-  <div class="footer-logos">
-    <img src="assets/images/scai_logo.png" alt="SCAI Lab Logo" class="logo" style="height: 40px; width: auto; margin-right: 10px;" />
-    <img src="assets/images/dart_logo.png" alt="DART Logo" class="logo" style="height: 40px; width: auto; margin-right: 10px;" />
-    <img src="assets/images/ethz_logo.png" alt="ETH Zurich Logo" class="logo" style="height: 20px; width: auto; margin-right: 10px;" />
+      <section>
+        <h2>Schema Repository</h2>
+        <p>
+          All MEDWEAR JSON schemas are hosted on our
+          <a href="https://github.com/SCAI-Lab/ord_schemas" target="_blank" rel="noopener">GitHub repository</a>.
+          These schemas define data structures for physiological signals and metadata to ensure
+          interoperability across devices and platforms.
+        </p>
+        <p>Example schemas:</p>
+        <ul>
+          <li><a href="https://github.com/SCAI-Lab/ord_schemas/blob/main/schema/ros4hc/bcg-1.x.json" target="_blank" rel="noopener">BCG Schema</a></li>
+          <li><a href="https://github.com/SCAI-Lab/ord_schemas/blob/main/schema/ros4hc/bcg-info-1.x.json" target="_blank" rel="noopener">BCGInfo Schema</a></li>
+        </ul>
+        <p>For downloadable files and inline previews of all schemas, see the <a href="schemas.html">Schemas page</a>.</p>
+      </section>
+
+      <section>
+        <h2>Relationship to Existing Standards</h2>
+        <table>
+          <thead>
+            <tr><th>Standard</th><th>Scope</th><th>MEDWEAR relationship</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a href="http://www.openmhealth.org" target="_blank" rel="noopener">Open mHealth</a></td>
+              <td>Structured JSON schemas for health data</td>
+              <td>Base schema format; MEDWEAR extends it for raw, high-frequency signals</td>
+            </tr>
+            <tr>
+              <td><a href="https://standards.ieee.org/standard/1752-2021.html" target="_blank" rel="noopener">IEEE 1752-2021</a></td>
+              <td>Mobile health data quality and interoperability</td>
+              <td>Normative reference for schema design and quality requirements</td>
+            </tr>
+            <tr>
+              <td><a href="https://www.hl7.org/fhir/" target="_blank" rel="noopener">HL7 FHIR</a></td>
+              <td>Clinical data exchange (EHR integration)</td>
+              <td>Target interoperability layer for clinical deployment</td>
+            </tr>
+            <tr>
+              <td><a href="https://www.openehr.org/" target="_blank" rel="noopener">openEHR</a></td>
+              <td>Semantic clinical models</td>
+              <td>Reference for clinical semantic precision</td>
+            </tr>
+            <tr>
+              <td>IEEE 11073-PHD</td>
+              <td>Personal health device communication</td>
+              <td>Informs device-level metadata modeling</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+    </main>
   </div>
-  <p>© 2025 ETH Zurich – MEDWEAR Project | Contact: diego.paez@scai.ethz.ch</p>
-</footer>
+
+  <footer>
+    <div class="footer-logos">
+      <img src="assets/images/scai_logo.png" alt="SCAI Lab Logo" />
+      <img src="assets/images/dart_logo.png" alt="DART Logo" />
+      <img src="assets/images/ethz_logo.png" alt="ETH Zurich Logo" class="ethz-logo" />
+    </div>
+    <p>© 2025 ETH Zurich – MEDWEAR Project | Contact: diego.paez@scai.ethz.ch</p>
+  </footer>
 </body>
 </html>
