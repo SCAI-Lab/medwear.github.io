@@ -20,7 +20,7 @@
     </nav>
   </header>
 
-  <div class="page-banner" style="background-image: url('assets/images/hero-home.jpg')">
+  <div class="page-banner" style="background-image: url('assets/images/hero-schemas.jpg')">
     <div class="page-banner-content">
       <h1>Documentation</h1>
       <p>Installation, usage examples, and integration guides</p>
@@ -41,10 +41,7 @@
         <h2>Quick Start</h2>
 
         <h3>JSON Schema structure</h3>
-        <p>
-          Each MEDWEAR schema defines a data structure for a physiological signal.
-          Here is a minimal ECG data example:
-        </p>
+        <p>Each MEDWEAR schema defines a data structure for a physiological signal. Here is a minimal ECG example:</p>
         <pre><code>{
   "schema_id": "org.medwear.biosignal.ecg",
   "version": "1.0",
@@ -89,25 +86,142 @@ print("Data is valid.")</code></pre>
           ROS 2 <code>.msg</code> definitions are available for integration with healthcare robots and assistive devices.
           The <code>healthcare_msgs</code> package supports ECG, BCG, PPG, EEG, EDA, IMU, HR, and HRV.
         </p>
-        <p>
-          <a href="https://github.com/SCAI-Lab/healthcare_msgs" target="_blank" rel="noopener">View the ROS 2 message package on GitHub</a>
-        </p>
+        <p><a href="https://github.com/SCAI-Lab/healthcare_msgs" target="_blank" rel="noopener">View the ROS 2 message package on GitHub</a></p>
 
         <h3>Conversion Tools</h3>
         <p>
           Command-line tools and notebooks are available to convert CSV, JSON, and raw wearable files
           into MEDWEAR-compliant format.
         </p>
+        <p><a href="https://github.com/medwear/conversion-tools" target="_blank" rel="noopener">Explore conversion tools on GitHub</a></p>
+      </section>
+
+      <section>
+        <h2>MED-API Setup</h2>
         <p>
-          <a href="https://github.com/medwear/conversion-tools" target="_blank" rel="noopener">Explore conversion tools on GitHub</a>
+          MED-API is the backend service of the MEDWEAR platform — a secure REST API for ingesting,
+          querying, and managing wearable health data. It runs alongside MinIO, InfluxDB, PostgreSQL,
+          Keycloak, Dagster, Grafana, and pgAdmin as a single-server Docker stack.
+          For the full API reference, see the <a href="med-api.html">MED-API page</a>.
         </p>
 
-        <h3>MED-API</h3>
-        <p>
-          For server-side ingestion, querying, and management of wearable data, see the
-          <a href="med-api.html">MED-API documentation</a>.
-          It provides a REST API backed by InfluxDB, PostgreSQL, and MinIO.
-        </p>
+        <h3>Quick Setup</h3>
+        <pre><code>./setup.sh</code></pre>
+        <p>This will automatically:</p>
+        <ul>
+          <li>Generate random secure credentials for all services (PostgreSQL, MinIO, Grafana, Keycloak, InfluxDB)</li>
+          <li>Create <code>.env</code> and <code>.env.medwear</code> files</li>
+          <li>Start all Docker services</li>
+          <li>Initialize InfluxDB and PostgreSQL tables</li>
+          <li>Save all generated credentials to <code>.credentials.txt</code></li>
+        </ul>
+        <p>After setup, view your credentials:</p>
+        <pre><code>cat .credentials.txt</code></pre>
+        <pre><code>PostgreSQL     : medwear / xK7mP2qR9nL4wY8j
+MinIO root     : minioadmin / hT3vB6cN1mX5pQ2r
+MinIO API key  : medwear-api / dF8yA4kW7nJ2mR6s...
+Keycloak admin : admin / hJ9nQ3vB6cN1mX5p
+InfluxDB       : admin / wY8jxK7mP2qR9nL4
+Grafana        : admin / T3vB6cN1mX5pQ2rd
+pgAdmin        : admin@medwear.local / F8yA4kW7nJ2mR6s</code></pre>
+        <p><strong>Note:</strong> Do not commit <code>.credentials.txt</code> to version control. It is already listed in <code>.gitignore</code>.</p>
+
+        <h3>Start &amp; Stop</h3>
+        <pre><code># First time or after code changes
+docker compose -f docker-compose.medwear-minimal.yml build
+docker compose -f docker-compose.medwear-minimal.yml up -d
+
+# Subsequent runs (no code changes)
+docker compose -f docker-compose.medwear-minimal.yml up -d</code></pre>
+        <p>After starting, Keycloak takes ~30 seconds to be ready.</p>
+        <pre><code># Restart a single service (e.g. after API code change)
+docker compose -f docker-compose.medwear-minimal.yml restart med-api
+
+# Stop all services
+docker compose -f docker-compose.medwear-minimal.yml down</code></pre>
+
+        <h3>Service Access</h3>
+        <table>
+          <thead>
+            <tr><th>Service</th><th>URL</th><th>Credentials</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>MED-API</td><td>https://localhost/v1/health</td><td>Token required</td></tr>
+            <tr><td>API Docs</td><td>https://localhost/docs</td><td>—</td></tr>
+            <tr><td>Frontend</td><td>https://localhost</td><td>Keycloak login</td></tr>
+            <tr><td>Keycloak</td><td>http://localhost:8180/admin</td><td>admin / see .credentials.txt</td></tr>
+            <tr><td>pgAdmin</td><td>http://localhost:5050</td><td>admin@medwear.com / see .credentials.txt</td></tr>
+            <tr><td>InfluxDB</td><td>http://localhost:8086</td><td>admin / see .credentials.txt</td></tr>
+            <tr><td>MinIO</td><td>http://localhost:9001</td><td>minioadmin / see .credentials.txt</td></tr>
+            <tr><td>Grafana</td><td>http://localhost:3001</td><td>admin / see .credentials.txt</td></tr>
+            <tr><td>Dagster</td><td>http://localhost:3000</td><td>—</td></tr>
+          </tbody>
+        </table>
+        <p>The MedWear platform is deployed at <code>https://172.20.83.11</code>. Frontend and API are accessible directly. Admin services require SSH tunnel or direct server access.</p>
+        <details>
+          <summary>Remote access via SSH tunnel</summary>
+          <pre><code>ssh -L 443:localhost:443 \
+    -L 80:localhost:80 \
+    -L 8180:localhost:8180 \
+    -L 9001:localhost:9001 \
+    -L 8086:localhost:8086 \
+    -L 3001:localhost:3001 \
+    -L 5050:localhost:5050 \
+    user@your-server.com</code></pre>
+        </details>
+
+        <h3>Authentication</h3>
+        <p>All endpoints require a Keycloak JWT token.</p>
+        <details>
+          <summary>Get a token (via API proxy — recommended)</summary>
+          <pre><code>curl -k -X POST https://localhost/v1/data/auth/token \
+  -H "Content-Type: application/json" \
+  -d '{"username":"&lt;user&gt;","password":"&lt;pass&gt;"}'</code></pre>
+        </details>
+        <details>
+          <summary>Get a token (direct Keycloak — internal/testing only)</summary>
+          <pre><code>curl -X POST http://localhost:8180/realms/medwear/protocol/openid-connect/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=password&amp;client_id=med-api&amp;client_secret=&lt;secret&gt;&amp;username=&lt;user&gt;&amp;password=&lt;pass&gt;"</code></pre>
+        </details>
+        <details>
+          <summary>Use the token</summary>
+          <pre><code>curl -k -H "Authorization: Bearer &lt;access_token&gt;" https://localhost/v1/me</code></pre>
+        </details>
+        <details>
+          <summary>Health check</summary>
+          <pre><code>curl -k https://localhost/v1/health</code></pre>
+        </details>
+
+        <h3>Testing</h3>
+        <pre><code>cd /path/to/repo/medwear_med_api
+source venv/bin/activate
+
+python3 scripts/test_phase3.py   # Batch upload, CSV, validation
+python3 scripts/test_phase4.py   # Query, delete, restore, admin, multi-project
+python3 scripts/test_phase5.py   # Error handling: 46/46 tests</code></pre>
+        <details>
+          <summary>Quick smoke test</summary>
+          <pre><code># 1. Get a token
+TOKEN=$(curl -sk -X POST https://localhost/v1/data/auth/token \
+  -H "Content-Type: application/json" \
+  -d '{"username":"&lt;your-username&gt;","password":"&lt;your-password&gt;"}' | jq -r .access_token)
+
+# 2. Check health
+curl -sk https://localhost/v1/health | jq .
+
+# 3. Query recent batches
+curl -sk -H "Authorization: Bearer $TOKEN" \
+  "https://localhost/v1/data?limit=5" | jq .</code></pre>
+        </details>
+
+        <h3>Backup</h3>
+        <p>Backs up PostgreSQL, InfluxDB, and MinIO to a compressed archive. Backups older than 30 days are deleted automatically.</p>
+        <pre><code># Run manually
+./scripts/backup.sh /opt/medwear_backups
+
+# Add to crontab (daily at 2 AM)
+0 2 * * * /path/to/med-api/scripts/backup.sh /opt/medwear_backups >> /var/log/medwear_backup.log 2>&1</code></pre>
       </section>
 
       <section>
