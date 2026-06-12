@@ -437,7 +437,7 @@ footer {
 }
 
 .footer-logos img {
-  height: 36px;
+  height: 72px;
   width: auto;
   border: none;
   box-shadow: none;
@@ -447,7 +447,7 @@ footer {
   transition: opacity 0.2s;
 }
 
-.footer-logos .ethz-logo { height: 20px; }
+.footer-logos .ethz-logo { height: 48px; }
 
 footer p {
   color: rgba(255, 255, 255, 0.45);
