@@ -475,8 +475,10 @@ footer p {
   color: var(--white);
 }
 
-.pilot-card--spz .pilot-card-header { background: linear-gradient(135deg, #3c3489 0%, #534ab7 100%); }
-.pilot-card--llui .pilot-card-header { background: linear-gradient(135deg, #085041 0%, #0f6e56 100%); }
+.pilot-card--spz .pilot-card-header  { background: linear-gradient(135deg, #3c3489 0%, #534ab7 100%); }
+.pilot-card--llui .pilot-card-header  { background: linear-gradient(135deg, #085041 0%, #0f6e56 100%); }
+.pilot-card--json .pilot-card-header  { background: linear-gradient(135deg, #003366 0%, #004d99 100%); }
+.pilot-card--ros .pilot-card-header   { background: linear-gradient(135deg, #006666 0%, #0099aa 100%); }
 
 .pilot-tag {
   display: inline-block;

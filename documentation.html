@@ -15,10 +15,10 @@
     <nav>
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
-      <a href="use-cases.html">Use Cases</a>
       <a href="documentation.html" class="active">Documentation</a>
       <a href="schemas.html">Schemas</a>
       <a href="med-api.html">MED-API</a>
+      <a href="use-cases.html">Use Cases</a>
       <a href="contribute.html">Contribute</a>
     </nav>
   </header>
@@ -57,11 +57,27 @@
       </section>
 
       <section>
-        <h2>Quick Start</h2>
+        <h2>Integration Options</h2>
+        <p>
+          MEDWEAR schemas are available in two formats. Choose based on your application:
+          JSON Schemas for general data storage and validation, or ROS 2 messages for
+          real-time streaming and robotics middleware.
+        </p>
 
-        <h3>JSON Schema structure</h3>
-        <p>Each MEDWEAR schema defines a data structure for a physiological signal. Here is a minimal ECG example:</p>
-        <pre><code>{
+        <div class="pilot-grid" style="margin-top: 1.4em;">
+
+          <div class="pilot-card pilot-card--json">
+            <div class="pilot-card-header">
+              <span class="pilot-tag">Option A</span>
+              <h3>JSON Schemas</h3>
+              <p class="pilot-subtitle">Data storage · validation · non-ROS applications</p>
+            </div>
+            <div class="pilot-card-body">
+              <h4>When to use</h4>
+              <p>Your application stores, validates, or processes wearable data outside a ROS environment — e.g. a web backend, mobile app, or data pipeline.</p>
+              <h4>Schema structure</h4>
+              <p>Each schema defines a physiological signal. Minimal ECG example:</p>
+              <pre><code>{
   "schema_id": "org.medwear.biosignal.ecg",
   "version": "1.0",
   "data": {
@@ -74,48 +90,70 @@
     "timestamp": "2025-06-30T15:30:00Z"
   }
 }</code></pre>
-
-        <h3>Validating data in Python</h3>
-        <p>Use the <code>jsonschema</code> library to validate your data against a MEDWEAR schema:</p>
-        <pre><code>import json
+              <h4>Validate in Python</h4>
+              <pre><code>import json
 from jsonschema import validate
 
 with open('ecg_schema.json') as f:
     schema = json.load(f)
-
 with open('ecg_data.json') as f:
     data = json.load(f)
 
 validate(instance=data, schema=schema)
 print("Data is valid.")</code></pre>
+              <h4>Resources</h4>
+              <p>
+                Browse schemas on the <a href="schemas.html">Schemas page</a> or download the full set from
+                <a href="https://github.com/SCAI-Lab/ord_schemas/tree/main/schema" target="_blank" rel="noopener">GitHub</a>.
+              </p>
+            </div>
+          </div>
+
+          <div class="pilot-card pilot-card--ros">
+            <div class="pilot-card-header">
+              <span class="pilot-tag">Option B</span>
+              <h3>ROS 2 Messages</h3>
+              <p class="pilot-subtitle">Real-time streaming · robotics · middleware</p>
+            </div>
+            <div class="pilot-card-body">
+              <h4>When to use</h4>
+              <p>Your application uses ROS 2 — e.g. a healthcare robot, assistive device, or real-time signal processing pipeline that publishes sensor data as ROS topics.</p>
+              <h4>Package</h4>
+              <p>
+                The <code>healthcare_msgs</code> package provides <code>.msg</code> definitions for all
+                MEDWEAR signal types. Supported signals:
+              </p>
+              <div class="signal-tags" style="margin-bottom: 0.8em;">
+                <span class="signal-tag">ECG</span>
+                <span class="signal-tag">BCG</span>
+                <span class="signal-tag">PPG</span>
+                <span class="signal-tag">EEG</span>
+                <span class="signal-tag">EDA</span>
+                <span class="signal-tag">IMU</span>
+                <span class="signal-tag">HR</span>
+                <span class="signal-tag">HRV</span>
+              </div>
+              <h4>Install</h4>
+              <pre><code>cd &lt;your_ros2_ws&gt;/src
+git clone https://github.com/SCAI-Lab/healthcare_msgs
+cd .. && colcon build --packages-select healthcare_msgs</code></pre>
+              <h4>Resources</h4>
+              <p>
+                <a href="https://github.com/SCAI-Lab/healthcare_msgs" target="_blank" rel="noopener">View the full package on GitHub</a>
+              </p>
+            </div>
+          </div>
+
+        </div>
       </section>
 
       <section>
-        <h2>Integration Guides</h2>
-
-        <h3>JSON Schemas</h3>
-        <p>
-          MEDWEAR schemas extend Open mHealth to support raw, high-frequency sensor formats.
-          Download individual schemas from the <a href="schemas.html">Schemas page</a> or browse the full set on
-          <a href="https://github.com/SCAI-Lab/ord_schemas" target="_blank" rel="noopener">GitHub</a>.
-        </p>
-
-        <h3>ROS 2 Messages</h3>
-        <p>
-          ROS 2 <code>.msg</code> definitions are available for integration with healthcare robots and assistive
-          devices.
-          The <code>healthcare_msgs</code> package supports ECG, BCG, PPG, EEG, EDA, IMU, HR, and HRV.
-        </p>
-        <p><a href="https://github.com/SCAI-Lab/healthcare_msgs" target="_blank" rel="noopener">View the ROS 2 message
-            package on GitHub</a></p>
-
-        <h3>Conversion Tools</h3>
+        <h2>Conversion Tools</h2>
         <p>
           Command-line tools and notebooks are available to convert CSV, JSON, and raw wearable files
           into MEDWEAR-compliant format.
         </p>
-        <p><a href="https://github.com/medwear/conversion-tools" target="_blank" rel="noopener">Explore conversion tools
-            on GitHub</a></p>
+        <p><a href="https://github.com/SCAI-Lab/healthcare_common" target="_blank" rel="noopener">Explore conversion tools on GitHub</a></p>
       </section>
 
       <section>
@@ -151,11 +189,18 @@ print("Data is valid.")</code></pre>
       <section>
         <h2>Overview</h2>
         <p>
-          MED-API is the backend service of the MEDWEAR platform - a secure REST API for ingesting,
+          MED-API is the backend service of the MEDWEAR platform — a secure REST API for ingesting,
           querying, and managing wearable health data. It runs alongside MinIO, InfluxDB, PostgreSQL,
           Keycloak, Dagster, Grafana, and pgAdmin as a single-server Docker stack.
           For the full API reference, see the <a href="med-api.html">MED-API page</a>.
         </p>
+      </section>
+
+      <section>
+        <h2>Installation</h2>
+        <p>Clone the MEDWEAR platform repository from GitHub:</p>
+        <pre><code>git clone https://github.com/SCAI-Lab/medwear
+cd medwear</code></pre>
       </section>
 
       <section>
