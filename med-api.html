@@ -7,7 +7,6 @@
   <title>MED-API | MEDWEAR</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-  <link rel="icon" href="favicon.ico" />
 </head>
 
 <body>
@@ -253,7 +252,8 @@
         <p>Query parameters for <code>/v1/data</code>: <code>patient_ids</code>, <code>signal_type</code>,
           <code>start</code>, <code>end</code>, <code>device_id</code>, <code>project_id</code>, <code>limit</code>,
           <code>offset</code>, <code>metadata_only</code>, <code>show_deleted</code>, <code>format</code> (json/csv),
-          <code>downsample</code></p>
+          <code>downsample</code>
+        </p>
       </section>
 
       <section>
@@ -461,7 +461,8 @@
           etc.).</p>
         <ul>
           <li>Tables per project: <code>measurement_batch</code>, <code>audit_log</code>, <code>user_project</code>,
-            <code>deleted_files</code></li>
+            <code>deleted_files</code>
+          </li>
           <li>Central postgres DB tracks soft-deleted projects in <code>deleted_projects</code></li>
           <li><code>global_admin</code> can create and delete projects via the Admin tab or API</li>
           <li>Grafana datasources are auto-provisioned for each project on startup and sync hourly</li>
@@ -545,7 +546,8 @@
       <section>
         <h2>GDPR / Privacy</h2>
         <p>MedWear implements GDPR compliance via <code>/v1/data/gdpr/*</code> endpoints. All write operations require
-          <code>project_admin</code> or <code>global_admin</code> role.</p>
+          <code>project_admin</code> or <code>global_admin</code> role.
+        </p>
         <table>
           <thead>
             <tr>
