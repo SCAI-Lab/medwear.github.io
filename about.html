@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,6 +8,7 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="favicon.ico" />
 </head>
+
 <body>
 
   <header>
@@ -14,6 +16,7 @@
     <nav>
       <a href="index.html">Home</a>
       <a href="about.html" class="active">About</a>
+      <a href="use-cases.html">Use Cases</a>
       <a href="documentation.html">Documentation</a>
       <a href="schemas.html">Schemas</a>
       <a href="med-api.html">MED-API</a>
@@ -40,8 +43,8 @@
           data from medical wearables.
         </p>
         <p>
-          We address the fragmentation of the digital health ecosystem by building on existing standards —
-          Open mHealth, HL7 FHIR, IEEE 11073, and openEHR — to define lightweight, extensible schemas
+          We address the fragmentation of the digital health ecosystem by building on existing standards -
+          Open mHealth, HL7 FHIR, IEEE 11073, and openEHR - to define lightweight, extensible schemas
           suitable for modern sensing devices and middleware systems like ROS 2 and MQTT.
         </p>
       </section>
@@ -49,8 +52,8 @@
       <section>
         <h2>Why Standardization Matters</h2>
         <p>
-          Although wearable technologies have become integral to modern healthcare — supporting use cases
-          from chronic disease management to preventive care — the lack of common data formats hinders
+          Although wearable technologies have become integral to modern healthcare - supporting use cases
+          from chronic disease management to preventive care - the lack of common data formats hinders
           integration with EHRs, AI systems, and clinical decision tools. Over 80% of healthcare data
           remains unstructured and difficult to reuse.
         </p>
@@ -73,22 +76,29 @@
         <h2>Standards &amp; Design Principles</h2>
         <p>
           MEDWEAR schemas follow the
-          <a href="https://standards.ieee.org/standard/1752-2021.html" target="_blank" rel="noopener">IEEE 1752-2021 Standard</a>
-          and are compatible with the <a href="http://www.openmhealth.org" target="_blank" rel="noopener">Open mHealth</a>
+          <a href="https://standards.ieee.org/standard/1752-2021.html" target="_blank" rel="noopener">IEEE 1752-2021
+            Standard</a>
+          and are compatible with the <a href="http://www.openmhealth.org" target="_blank" rel="noopener">Open
+            mHealth</a>
           framework, extending both to support high-frequency raw sensor streams.
         </p>
         <ul>
-          <li><strong>Vendor-agnostic</strong> — no dependency on proprietary device formats.</li>
-          <li><strong>FAIR</strong> — Findable, Accessible, Interoperable, and Reusable.</li>
-          <li><strong>Modular</strong> — signal schemas are self-contained and composable.</li>
-          <li><strong>Middleware-ready</strong> — definitions ship as both JSON Schemas and ROS 2 <code>.msg</code> files.</li>
-          <li><strong>Extensible</strong> — new signal types can be added without breaking existing consumers.</li>
+          <li><strong>Vendor-agnostic</strong> - no dependency on proprietary device formats.</li>
+          <li><strong>FAIR</strong> - Findable, Accessible, Interoperable, and Reusable.</li>
+          <li><strong>Modular</strong> - signal schemas are self-contained and composable.</li>
+          <li><strong>Middleware-ready</strong> - definitions ship as both JSON Schemas and ROS 2 <code>.msg</code>
+            files.</li>
+          <li><strong>Extensible</strong> - new signal types can be added without breaking existing consumers.</li>
         </ul>
 
         <h3>Relationship to existing standards</h3>
         <table>
           <thead>
-            <tr><th>Standard</th><th>Scope</th><th>MEDWEAR relationship</th></tr>
+            <tr>
+              <th>Standard</th>
+              <th>Scope</th>
+              <th>MEDWEAR relationship</th>
+            </tr>
           </thead>
           <tbody>
             <tr>
@@ -97,7 +107,8 @@
               <td>Base schema format; MEDWEAR extends it for raw, high-frequency signals</td>
             </tr>
             <tr>
-              <td><a href="https://standards.ieee.org/standard/1752-2021.html" target="_blank" rel="noopener">IEEE 1752-2021</a></td>
+              <td><a href="https://standards.ieee.org/ieee/1752.1/6982/" target="_blank" rel="noopener">IEEE
+                  1752.1-2021</a></td>
               <td>Mobile health data quality and interoperability</td>
               <td>Normative reference for schema design and quality requirements</td>
             </tr>
@@ -112,7 +123,8 @@
               <td>Reference for clinical semantic precision</td>
             </tr>
             <tr>
-              <td>IEEE 11073-PHD</td>
+              <td><a href="https://sagroups.ieee.org/11073/phd-wg/" target="_blank" rel="noopener">IEEE 11073-PHD</a>
+              </td>
               <td>Personal health device communication</td>
               <td>Informs device-level metadata modeling</td>
             </tr>
@@ -123,7 +135,7 @@
       <section>
         <h2>Collaborating Institutions</h2>
         <ul>
-          <li>ETH Zurich — Open Research Data Initiative</li>
+          <li>ETH Zurich - Open Research Data Initiative</li>
           <li>SCAI Lab, ETH Zurich</li>
           <li>DART Lab, Lake Lucerne Institute</li>
           <li>University of Zurich (UZH)</li>
@@ -143,4 +155,5 @@
   </footer>
 
 </body>
+
 </html>

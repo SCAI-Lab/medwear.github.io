@@ -455,6 +455,92 @@ footer p {
   font-size: 0.85rem;
 }
 
+/* ── Pilot study cards ──────────────────────────────────────── */
+.pilot-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+  margin: 2em 0;
+}
+
+.pilot-card {
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--gray-mid);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+}
+
+.pilot-card-header {
+  padding: 22px 24px 18px;
+  color: var(--white);
+}
+
+.pilot-card--spz .pilot-card-header { background: linear-gradient(135deg, #3c3489 0%, #534ab7 100%); }
+.pilot-card--llui .pilot-card-header { background: linear-gradient(135deg, #085041 0%, #0f6e56 100%); }
+
+.pilot-tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: rgba(255, 255, 255, 0.22);
+  padding: 3px 10px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+
+.pilot-card-header h3 {
+  margin: 0 0 6px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--white);
+}
+
+.pilot-subtitle {
+  margin: 0;
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.72);
+  font-family: 'Cascadia Code', 'Fira Code', monospace;
+}
+
+.pilot-card-body {
+  padding: 20px 24px 22px;
+  background: var(--white);
+}
+
+.pilot-card-body h4 {
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  margin: 1.4em 0 0.5em;
+}
+
+.pilot-card-body h4:first-child { margin-top: 0; }
+
+.pilot-card-body p { font-size: 0.92rem; margin: 0 0 0.6em; }
+.pilot-card-body ol { font-size: 0.92rem; padding-left: 1.4em; margin: 0 0 0.6em; }
+.pilot-card-body li { margin-bottom: 0.45em; }
+
+.signal-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.signal-tag {
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 20px;
+  background: var(--gray-light);
+  color: var(--blue-mid);
+  border: 1px solid var(--gray-mid);
+}
+
 /* ── Responsive ─────────────────────────────────────────────── */
 @media (max-width: 700px) {
   header {

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,12 +8,14 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="favicon.ico" />
 </head>
+
 <body>
   <header>
     <a href="index.html" class="header-brand">MEDWEAR</a>
     <nav>
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
+      <a href="use-cases.html">Use Cases</a>
       <a href="documentation.html">Documentation</a>
       <a href="schemas.html">Schemas</a>
       <a href="med-api.html" class="active">MED-API</a>
@@ -41,7 +44,8 @@
           For installation, Docker setup, authentication, and testing, see the
           <a href="documentation.html#med-api-setup">MED-API Setup section in Documentation</a>.
           Full documentation is also available on
-          <a href="https://drive.google.com/drive/folders/1VAd-iTaK5wsSysOTB_jY4xuWnfBtODRa?usp=sharing" target="_blank" rel="noopener">Google Drive</a>.
+          <a href="https://drive.google.com/drive/folders/1VAd-iTaK5wsSysOTB_jY4xuWnfBtODRa?usp=sharing" target="_blank"
+            rel="noopener">Google Drive</a>.
         </p>
       </section>
 
@@ -49,14 +53,32 @@
         <h2>Roles</h2>
         <table>
           <thead>
-            <tr><th>Role</th><th>Access</th></tr>
+            <tr>
+              <th>Role</th>
+              <th>Access</th>
+            </tr>
           </thead>
           <tbody>
-            <tr><td><code>device</code></td><td>Ingest data only</td></tr>
-            <tr><td><code>collaborator</code></td><td>Read data from assigned projects</td></tr>
-            <tr><td><code>researcher</code></td><td>Read data, download files</td></tr>
-            <tr><td><code>project_admin</code></td><td>Manage users within their project</td></tr>
-            <tr><td><code>global_admin</code></td><td>Full access: all projects, user/project management</td></tr>
+            <tr>
+              <td><code>device</code></td>
+              <td>Ingest data only</td>
+            </tr>
+            <tr>
+              <td><code>collaborator</code></td>
+              <td>Read data from assigned projects</td>
+            </tr>
+            <tr>
+              <td><code>researcher</code></td>
+              <td>Read data, download files</td>
+            </tr>
+            <tr>
+              <td><code>project_admin</code></td>
+              <td>Manage users within their project</td>
+            </tr>
+            <tr>
+              <td><code>global_admin</code></td>
+              <td>Full access: all projects, user/project management</td>
+            </tr>
           </tbody>
         </table>
       </section>
@@ -66,16 +88,48 @@
         <p>Available at <code>https://localhost</code>. Login with Keycloak credentials.</p>
         <table>
           <thead>
-            <tr><th>Tab</th><th>Access</th><th>Description</th></tr>
+            <tr>
+              <th>Tab</th>
+              <th>Access</th>
+              <th>Description</th>
+            </tr>
           </thead>
           <tbody>
-            <tr><td>Dashboard</td><td>All roles</td><td>Batch statistics, recent uploads</td></tr>
-            <tr><td>Upload</td><td>collaborator+</td><td>JSON, CSV, raw file upload (.cwa / .json / .csv)</td></tr>
-            <tr><td>Query Data</td><td>collaborator+</td><td>Filter and search batches, view/download signals</td></tr>
-            <tr><td>File Manager</td><td>collaborator+</td><td>MinIO files: list, download, soft-delete, restore</td></tr>
-            <tr><td>Activities</td><td>project_admin, global_admin</td><td>Audit log — All Activities + File Activities tabs</td></tr>
-            <tr><td>Admin</td><td>project_admin, global_admin</td><td>User and project management</td></tr>
-            <tr><td>Health Check</td><td>All roles</td><td>Real-time service status</td></tr>
+            <tr>
+              <td>Dashboard</td>
+              <td>All roles</td>
+              <td>Batch statistics, recent uploads</td>
+            </tr>
+            <tr>
+              <td>Upload</td>
+              <td>collaborator+</td>
+              <td>JSON, CSV, raw file upload (.cwa / .json / .csv)</td>
+            </tr>
+            <tr>
+              <td>Query Data</td>
+              <td>collaborator+</td>
+              <td>Filter and search batches, view/download signals</td>
+            </tr>
+            <tr>
+              <td>File Manager</td>
+              <td>collaborator+</td>
+              <td>MinIO files: list, download, soft-delete, restore</td>
+            </tr>
+            <tr>
+              <td>Activities</td>
+              <td>project_admin, global_admin</td>
+              <td>Audit log - All Activities + File Activities tabs</td>
+            </tr>
+            <tr>
+              <td>Admin</td>
+              <td>project_admin, global_admin</td>
+              <td>User and project management</td>
+            </tr>
+            <tr>
+              <td>Health Check</td>
+              <td>All roles</td>
+              <td>Real-time service status</td>
+            </tr>
           </tbody>
         </table>
       </section>
@@ -83,7 +137,7 @@
       <section>
         <h2>Data Ingestion</h2>
 
-        <h3>POST /v1/data/batch — Structured sensor data</h3>
+        <h3>POST /v1/data/batch - Structured sensor data</h3>
         <p>Stores metadata in PostgreSQL and signals in InfluxDB. Supports JSON and CSV.</p>
         <p><strong>Supported signal types:</strong> ECG, BCG, PPG, IMU, EEG, EDA, HR, HRV</p>
         <details>
@@ -115,7 +169,7 @@
   }'</code></pre>
         </details>
 
-        <h3>POST /v1/data/upload — Raw file upload</h3>
+        <h3>POST /v1/data/upload - Raw file upload</h3>
         <p>Stores raw files (<code>.cwa</code>, <code>.json</code>, <code>.csv</code>) in MinIO. Max 1 GB.</p>
         <details>
           <summary>Example request</summary>
@@ -131,41 +185,142 @@
         <h2>Query Endpoints</h2>
         <table>
           <thead>
-            <tr><th>Method</th><th>Endpoint</th><th>Description</th></tr>
+            <tr>
+              <th>Method</th>
+              <th>Endpoint</th>
+              <th>Description</th>
+            </tr>
           </thead>
           <tbody>
-            <tr><td>GET</td><td>/v1/data</td><td>List/filter batches</td></tr>
-            <tr><td>GET</td><td>/v1/data/{uuid}</td><td>Single batch (metadata + signals)</td></tr>
-            <tr><td>GET</td><td>/v1/data/{uuid}/metadata</td><td>Metadata only</td></tr>
-            <tr><td>GET</td><td>/v1/data/{uuid}/signals</td><td>Signals only</td></tr>
-            <tr><td>GET</td><td>/v1/data/patients/{patient_id}</td><td>All batches for a patient</td></tr>
-            <tr><td>DELETE</td><td>/v1/data/{uuid}</td><td>Soft delete batch</td></tr>
-            <tr><td>POST</td><td>/v1/data/{uuid}/restore</td><td>Restore soft-deleted batch</td></tr>
-            <tr><td>GET</td><td>/v1/data/files</td><td>List MinIO files</td></tr>
-            <tr><td>GET</td><td>/v1/data/files/{path}</td><td>Download file</td></tr>
-            <tr><td>DELETE</td><td>/v1/data/files/{path}</td><td>Soft delete file</td></tr>
-            <tr><td>POST</td><td>/v1/data/files/{path}/restore</td><td>Restore deleted file</td></tr>
+            <tr>
+              <td>GET</td>
+              <td>/v1/data</td>
+              <td>List/filter batches</td>
+            </tr>
+            <tr>
+              <td>GET</td>
+              <td>/v1/data/{uuid}</td>
+              <td>Single batch (metadata + signals)</td>
+            </tr>
+            <tr>
+              <td>GET</td>
+              <td>/v1/data/{uuid}/metadata</td>
+              <td>Metadata only</td>
+            </tr>
+            <tr>
+              <td>GET</td>
+              <td>/v1/data/{uuid}/signals</td>
+              <td>Signals only</td>
+            </tr>
+            <tr>
+              <td>GET</td>
+              <td>/v1/data/patients/{patient_id}</td>
+              <td>All batches for a patient</td>
+            </tr>
+            <tr>
+              <td>DELETE</td>
+              <td>/v1/data/{uuid}</td>
+              <td>Soft delete batch</td>
+            </tr>
+            <tr>
+              <td>POST</td>
+              <td>/v1/data/{uuid}/restore</td>
+              <td>Restore soft-deleted batch</td>
+            </tr>
+            <tr>
+              <td>GET</td>
+              <td>/v1/data/files</td>
+              <td>List MinIO files</td>
+            </tr>
+            <tr>
+              <td>GET</td>
+              <td>/v1/data/files/{path}</td>
+              <td>Download file</td>
+            </tr>
+            <tr>
+              <td>DELETE</td>
+              <td>/v1/data/files/{path}</td>
+              <td>Soft delete file</td>
+            </tr>
+            <tr>
+              <td>POST</td>
+              <td>/v1/data/files/{path}/restore</td>
+              <td>Restore deleted file</td>
+            </tr>
           </tbody>
         </table>
-        <p>Query parameters for <code>/v1/data</code>: <code>patient_ids</code>, <code>signal_type</code>, <code>start</code>, <code>end</code>, <code>device_id</code>, <code>project_id</code>, <code>limit</code>, <code>offset</code>, <code>metadata_only</code>, <code>show_deleted</code>, <code>format</code> (json/csv), <code>downsample</code></p>
+        <p>Query parameters for <code>/v1/data</code>: <code>patient_ids</code>, <code>signal_type</code>,
+          <code>start</code>, <code>end</code>, <code>device_id</code>, <code>project_id</code>, <code>limit</code>,
+          <code>offset</code>, <code>metadata_only</code>, <code>show_deleted</code>, <code>format</code> (json/csv),
+          <code>downsample</code></p>
       </section>
 
       <section>
         <h2>Admin Endpoints</h2>
         <table>
           <thead>
-            <tr><th>Method</th><th>Endpoint</th><th>Role required</th><th>Description</th></tr>
+            <tr>
+              <th>Method</th>
+              <th>Endpoint</th>
+              <th>Role required</th>
+              <th>Description</th>
+            </tr>
           </thead>
           <tbody>
-            <tr><td>POST</td><td>/v1/data/admin/users</td><td>project_admin+</td><td>Create user in Keycloak and assign to project</td></tr>
-            <tr><td>GET</td><td>/v1/data/admin/users</td><td>project_admin+</td><td>List users</td></tr>
-            <tr><td>DELETE</td><td>/v1/data/admin/user-project</td><td>project_admin+</td><td>Remove user from project</td></tr>
-            <tr><td>POST</td><td>/v1/data/admin/projects</td><td>global_admin</td><td>Create new project</td></tr>
-            <tr><td>GET</td><td>/v1/data/admin/projects</td><td>project_admin+</td><td>List projects</td></tr>
-            <tr><td>DELETE</td><td>/v1/data/admin/projects/{name}</td><td>global_admin</td><td>Soft delete project</td></tr>
-            <tr><td>POST</td><td>/v1/data/admin/projects/{name}/restore</td><td>global_admin</td><td>Restore deleted project</td></tr>
-            <tr><td>GET</td><td>/v1/data/admin/activities</td><td>project_admin+</td><td>Audit log</td></tr>
-            <tr><td>POST</td><td>/v1/data/auth/change-password</td><td>any</td><td>Change temporary password</td></tr>
+            <tr>
+              <td>POST</td>
+              <td>/v1/data/admin/users</td>
+              <td>project_admin+</td>
+              <td>Create user in Keycloak and assign to project</td>
+            </tr>
+            <tr>
+              <td>GET</td>
+              <td>/v1/data/admin/users</td>
+              <td>project_admin+</td>
+              <td>List users</td>
+            </tr>
+            <tr>
+              <td>DELETE</td>
+              <td>/v1/data/admin/user-project</td>
+              <td>project_admin+</td>
+              <td>Remove user from project</td>
+            </tr>
+            <tr>
+              <td>POST</td>
+              <td>/v1/data/admin/projects</td>
+              <td>global_admin</td>
+              <td>Create new project</td>
+            </tr>
+            <tr>
+              <td>GET</td>
+              <td>/v1/data/admin/projects</td>
+              <td>project_admin+</td>
+              <td>List projects</td>
+            </tr>
+            <tr>
+              <td>DELETE</td>
+              <td>/v1/data/admin/projects/{name}</td>
+              <td>global_admin</td>
+              <td>Soft delete project</td>
+            </tr>
+            <tr>
+              <td>POST</td>
+              <td>/v1/data/admin/projects/{name}/restore</td>
+              <td>global_admin</td>
+              <td>Restore deleted project</td>
+            </tr>
+            <tr>
+              <td>GET</td>
+              <td>/v1/data/admin/activities</td>
+              <td>project_admin+</td>
+              <td>Audit log</td>
+            </tr>
+            <tr>
+              <td>POST</td>
+              <td>/v1/data/auth/change-password</td>
+              <td>any</td>
+              <td>Change temporary password</td>
+            </tr>
           </tbody>
         </table>
       </section>
@@ -182,25 +337,93 @@
 }</code></pre>
         <table>
           <thead>
-            <tr><th>HTTP</th><th>Error Code</th><th>Meaning</th></tr>
+            <tr>
+              <th>HTTP</th>
+              <th>Error Code</th>
+              <th>Meaning</th>
+            </tr>
           </thead>
           <tbody>
-            <tr><td>400</td><td>INVALID_JSON</td><td>Malformed JSON body</td></tr>
-            <tr><td>400</td><td>SCHEMA_VALIDATION_FAILURE</td><td>Missing or invalid fields</td></tr>
-            <tr><td>400</td><td>CHECKSUM_MISMATCH</td><td>SHA-256 checksum did not match</td></tr>
-            <tr><td>400</td><td>CSV_PARSE_ERROR</td><td>CSV could not be parsed</td></tr>
-            <tr><td>400</td><td>UNSUPPORTED_FILE_TYPE</td><td>File extension not allowed</td></tr>
-            <tr><td>401</td><td>UNAUTHORIZED</td><td>Missing or invalid token</td></tr>
-            <tr><td>403</td><td>FORBIDDEN</td><td>Insufficient role</td></tr>
-            <tr><td>404</td><td>NOT_FOUND</td><td>Resource does not exist</td></tr>
-            <tr><td>409</td><td>DUPLICATE_BATCH</td><td>Idempotency key already used</td></tr>
-            <tr><td>409</td><td>DUPLICATE_FILE</td><td>File already exists in MinIO</td></tr>
-            <tr><td>413</td><td>PAYLOAD_TOO_LARGE</td><td>Batch exceeds 10 MB limit</td></tr>
-            <tr><td>422</td><td>INVALID_TIMESTAMP_ORDER</td><td>end_date_time ≤ start_date_time</td></tr>
-            <tr><td>422</td><td>MISSING_SAMPLING_RATE</td><td>sampling_rate = 0 and cannot be inferred</td></tr>
-            <tr><td>429</td><td>RATE_LIMIT_EXCEEDED</td><td>100 requests/minute per token exceeded</td></tr>
-            <tr><td>500</td><td>STORAGE_ERROR</td><td>MinIO / InfluxDB write failure</td></tr>
-            <tr><td>500</td><td>INTERNAL_SERVER_ERROR</td><td>Unexpected server error</td></tr>
+            <tr>
+              <td>400</td>
+              <td>INVALID_JSON</td>
+              <td>Malformed JSON body</td>
+            </tr>
+            <tr>
+              <td>400</td>
+              <td>SCHEMA_VALIDATION_FAILURE</td>
+              <td>Missing or invalid fields</td>
+            </tr>
+            <tr>
+              <td>400</td>
+              <td>CHECKSUM_MISMATCH</td>
+              <td>SHA-256 checksum did not match</td>
+            </tr>
+            <tr>
+              <td>400</td>
+              <td>CSV_PARSE_ERROR</td>
+              <td>CSV could not be parsed</td>
+            </tr>
+            <tr>
+              <td>400</td>
+              <td>UNSUPPORTED_FILE_TYPE</td>
+              <td>File extension not allowed</td>
+            </tr>
+            <tr>
+              <td>401</td>
+              <td>UNAUTHORIZED</td>
+              <td>Missing or invalid token</td>
+            </tr>
+            <tr>
+              <td>403</td>
+              <td>FORBIDDEN</td>
+              <td>Insufficient role</td>
+            </tr>
+            <tr>
+              <td>404</td>
+              <td>NOT_FOUND</td>
+              <td>Resource does not exist</td>
+            </tr>
+            <tr>
+              <td>409</td>
+              <td>DUPLICATE_BATCH</td>
+              <td>Idempotency key already used</td>
+            </tr>
+            <tr>
+              <td>409</td>
+              <td>DUPLICATE_FILE</td>
+              <td>File already exists in MinIO</td>
+            </tr>
+            <tr>
+              <td>413</td>
+              <td>PAYLOAD_TOO_LARGE</td>
+              <td>Batch exceeds 10 MB limit</td>
+            </tr>
+            <tr>
+              <td>422</td>
+              <td>INVALID_TIMESTAMP_ORDER</td>
+              <td>end_date_time ≤ start_date_time</td>
+            </tr>
+            <tr>
+              <td>422</td>
+              <td>MISSING_SAMPLING_RATE</td>
+              <td>sampling_rate = 0 and cannot be inferred</td>
+            </tr>
+            <tr>
+              <td>429</td>
+              <td>RATE_LIMIT_EXCEEDED</td>
+              <td>100 requests/minute per token exceeded</td>
+            </tr>
+            <tr>
+              <td>500</td>
+              <td>STORAGE_ERROR</td>
+              <td>MinIO / InfluxDB write failure</td>
+            </tr>
+            <tr>
+              <td>500</td>
+              <td>INTERNAL_SERVER_ERROR</td>
+              <td>Unexpected server error</td>
+            </tr>
           </tbody>
         </table>
       </section>
@@ -209,21 +432,35 @@
         <h2>Rate Limiting</h2>
         <table>
           <thead>
-            <tr><th>Endpoint</th><th>Limit</th></tr>
+            <tr>
+              <th>Endpoint</th>
+              <th>Limit</th>
+            </tr>
           </thead>
           <tbody>
-            <tr><td>POST /v1/data/batch</td><td>50 / minute</td></tr>
-            <tr><td>POST /v1/data/upload</td><td>20 / minute</td></tr>
-            <tr><td>All other endpoints</td><td>100 / minute</td></tr>
+            <tr>
+              <td>POST /v1/data/batch</td>
+              <td>50 / minute</td>
+            </tr>
+            <tr>
+              <td>POST /v1/data/upload</td>
+              <td>20 / minute</td>
+            </tr>
+            <tr>
+              <td>All other endpoints</td>
+              <td>100 / minute</td>
+            </tr>
           </tbody>
         </table>
       </section>
 
       <section>
         <h2>Multi-Project Architecture</h2>
-        <p>Each project has its own PostgreSQL database (<code>medwear_project1</code>, <code>medwear_project2</code>, etc.).</p>
+        <p>Each project has its own PostgreSQL database (<code>medwear_project1</code>, <code>medwear_project2</code>,
+          etc.).</p>
         <ul>
-          <li>Tables per project: <code>measurement_batch</code>, <code>audit_log</code>, <code>user_project</code>, <code>deleted_files</code></li>
+          <li>Tables per project: <code>measurement_batch</code>, <code>audit_log</code>, <code>user_project</code>,
+            <code>deleted_files</code></li>
           <li>Central postgres DB tracks soft-deleted projects in <code>deleted_projects</code></li>
           <li><code>global_admin</code> can create and delete projects via the Admin tab or API</li>
           <li>Grafana datasources are auto-provisioned for each project on startup and sync hourly</li>
@@ -232,18 +469,35 @@
 
       <section>
         <h2>Soft Delete &amp; Purge</h2>
-        <p>All deletes are soft — data is marked deleted and permanently removed after 24 hours.</p>
+        <p>All deletes are soft - data is marked deleted and permanently removed after 24 hours.</p>
         <table>
           <thead>
-            <tr><th>Resource</th><th>Soft delete</th><th>Hard delete</th></tr>
+            <tr>
+              <th>Resource</th>
+              <th>Soft delete</th>
+              <th>Hard delete</th>
+            </tr>
           </thead>
           <tbody>
-            <tr><td>Batch (metadata + signals)</td><td>is_deleted=true in PostgreSQL</td><td>Purge removes PostgreSQL row + InfluxDB data</td></tr>
-            <tr><td>File</td><td>Entry in deleted_files table</td><td>Purge removes from MinIO + table</td></tr>
-            <tr><td>Project</td><td>Entry in deleted_projects table</td><td>Purge drops database</td></tr>
+            <tr>
+              <td>Batch (metadata + signals)</td>
+              <td>is_deleted=true in PostgreSQL</td>
+              <td>Purge removes PostgreSQL row + InfluxDB data</td>
+            </tr>
+            <tr>
+              <td>File</td>
+              <td>Entry in deleted_files table</td>
+              <td>Purge removes from MinIO + table</td>
+            </tr>
+            <tr>
+              <td>Project</td>
+              <td>Entry in deleted_projects table</td>
+              <td>Purge drops database</td>
+            </tr>
           </tbody>
         </table>
-        <p>The purge loop runs every hour. Deleted items can be restored before the 24h window via the frontend or API.</p>
+        <p>The purge loop runs every hour. Deleted items can be restored before the 24h window via the frontend or API.
+        </p>
       </section>
 
       <section>
@@ -251,31 +505,80 @@
         <p>Optional TOTP-based 2FA using any authenticator app (e.g. Google Authenticator).</p>
         <table>
           <thead>
-            <tr><th>Method</th><th>Endpoint</th><th>Description</th></tr>
+            <tr>
+              <th>Method</th>
+              <th>Endpoint</th>
+              <th>Description</th>
+            </tr>
           </thead>
           <tbody>
-            <tr><td>GET</td><td>/v1/auth/2fa/status</td><td>Check if 2FA is enabled</td></tr>
-            <tr><td>POST</td><td>/v1/auth/2fa/setup</td><td>Generate secret and QR code</td></tr>
-            <tr><td>POST</td><td>/v1/auth/2fa/enable</td><td>Verify code and activate 2FA</td></tr>
-            <tr><td>POST</td><td>/v1/auth/2fa/disable</td><td>Verify code and deactivate 2FA</td></tr>
-            <tr><td>POST</td><td>/v1/auth/2fa/verify</td><td>Verify a TOTP code after login</td></tr>
+            <tr>
+              <td>GET</td>
+              <td>/v1/auth/2fa/status</td>
+              <td>Check if 2FA is enabled</td>
+            </tr>
+            <tr>
+              <td>POST</td>
+              <td>/v1/auth/2fa/setup</td>
+              <td>Generate secret and QR code</td>
+            </tr>
+            <tr>
+              <td>POST</td>
+              <td>/v1/auth/2fa/enable</td>
+              <td>Verify code and activate 2FA</td>
+            </tr>
+            <tr>
+              <td>POST</td>
+              <td>/v1/auth/2fa/disable</td>
+              <td>Verify code and deactivate 2FA</td>
+            </tr>
+            <tr>
+              <td>POST</td>
+              <td>/v1/auth/2fa/verify</td>
+              <td>Verify a TOTP code after login</td>
+            </tr>
           </tbody>
         </table>
       </section>
 
       <section>
         <h2>GDPR / Privacy</h2>
-        <p>MedWear implements GDPR compliance via <code>/v1/data/gdpr/*</code> endpoints. All write operations require <code>project_admin</code> or <code>global_admin</code> role.</p>
+        <p>MedWear implements GDPR compliance via <code>/v1/data/gdpr/*</code> endpoints. All write operations require
+          <code>project_admin</code> or <code>global_admin</code> role.</p>
         <table>
           <thead>
-            <tr><th>Article</th><th>Endpoint</th><th>Description</th></tr>
+            <tr>
+              <th>Article</th>
+              <th>Endpoint</th>
+              <th>Description</th>
+            </tr>
           </thead>
           <tbody>
-            <tr><td>Art. 7</td><td>POST /v1/data/gdpr/consent/{patient_id}</td><td>Grant consent</td></tr>
-            <tr><td>Art. 7 §3</td><td>DELETE /v1/data/gdpr/consent/{patient_id}/{consent_type}</td><td>Revoke consent</td></tr>
-            <tr><td>Art. 7</td><td>GET /v1/data/gdpr/consent/{patient_id}</td><td>List all consents for a patient</td></tr>
-            <tr><td>Art. 17</td><td>DELETE /v1/data/gdpr/erasure/{patient_id}</td><td>Right to erasure — cascades through PostgreSQL → InfluxDB → MinIO</td></tr>
-            <tr><td>Art. 20</td><td>GET /v1/data/gdpr/export/{patient_id}</td><td>Data portability — exports all patient data as a JSON archive</td></tr>
+            <tr>
+              <td>Art. 7</td>
+              <td>POST /v1/data/gdpr/consent/{patient_id}</td>
+              <td>Grant consent</td>
+            </tr>
+            <tr>
+              <td>Art. 7 §3</td>
+              <td>DELETE /v1/data/gdpr/consent/{patient_id}/{consent_type}</td>
+              <td>Revoke consent</td>
+            </tr>
+            <tr>
+              <td>Art. 7</td>
+              <td>GET /v1/data/gdpr/consent/{patient_id}</td>
+              <td>List all consents for a patient</td>
+            </tr>
+            <tr>
+              <td>Art. 17</td>
+              <td>DELETE /v1/data/gdpr/erasure/{patient_id}</td>
+              <td>Right to erasure - cascades through PostgreSQL → InfluxDB → MinIO</td>
+            </tr>
+            <tr>
+              <td>Art. 20</td>
+              <td>GET /v1/data/gdpr/export/{patient_id}</td>
+              <td>Data portability - exports all patient data as a JSON archive</td>
+            </tr>
           </tbody>
         </table>
       </section>
@@ -285,13 +588,33 @@
         <p>Streams live biosignal data from ROS 2 topics directly into the MedWear API.</p>
         <table>
           <thead>
-            <tr><th>Signal</th><th>Message type</th><th>Unit</th></tr>
+            <tr>
+              <th>Signal</th>
+              <th>Message type</th>
+              <th>Unit</th>
+            </tr>
           </thead>
           <tbody>
-            <tr><td>EEG</td><td>healthcare_msgs/msg/EEG</td><td>uV</td></tr>
-            <tr><td>EDA</td><td>healthcare_msgs/msg/EDA</td><td>uS</td></tr>
-            <tr><td>HR</td><td>healthcare_msgs/msg/HeartRate</td><td>bpm</td></tr>
-            <tr><td>HRV</td><td>healthcare_msgs/msg/HeartRateVariability</td><td>ms</td></tr>
+            <tr>
+              <td>EEG</td>
+              <td>healthcare_msgs/msg/EEG</td>
+              <td>uV</td>
+            </tr>
+            <tr>
+              <td>EDA</td>
+              <td>healthcare_msgs/msg/EDA</td>
+              <td>uS</td>
+            </tr>
+            <tr>
+              <td>HR</td>
+              <td>healthcare_msgs/msg/HeartRate</td>
+              <td>bpm</td>
+            </tr>
+            <tr>
+              <td>HRV</td>
+              <td>healthcare_msgs/msg/HeartRateVariability</td>
+              <td>ms</td>
+            </tr>
           </tbody>
         </table>
         <details>
@@ -316,21 +639,21 @@ docker run --rm \
         <pre><code>medwear_med_api/
   medwear_med_api/
     routers/
-      utils.py       — shared helpers
-      batches.py     — batch query/delete/restore endpoints
-      files.py       — MinIO file endpoints
-      patients.py    — patient timeline endpoint
-      admin.py       — user/project/activity management
-      totp.py        — 2FA (TOTP) endpoints
+      utils.py       - shared helpers
+      batches.py     - batch query/delete/restore endpoints
+      files.py       - MinIO file endpoints
+      patients.py    - patient timeline endpoint
+      admin.py       - user/project/activity management
+      totp.py        - 2FA (TOTP) endpoints
     query_router.py
-    batch_router.py  — data ingestion endpoints
-    auth.py          — Keycloak JWT validation
-    audit.py         — request audit logging middleware
-    db.py            — per-project session factory
-    models.py        — SQLModel table definitions
-    grafana_utils.py — Grafana datasource auto-provisioning
-    influx_reader.py — InfluxDB signal queries
-    influx_writer.py — InfluxDB signal writes
+    batch_router.py  - data ingestion endpoints
+    auth.py          - Keycloak JWT validation
+    audit.py         - request audit logging middleware
+    db.py            - per-project session factory
+    models.py        - SQLModel table definitions
+    grafana_utils.py - Grafana datasource auto-provisioning
+    influx_reader.py - InfluxDB signal queries
+    influx_writer.py - InfluxDB signal writes
   scripts/
     run_med_api.py
     test_phase3.py / test_phase4.py / test_phase5.py</code></pre>
@@ -347,4 +670,5 @@ docker run --rm \
     <p>© 2025 ETH Zurich – MEDWEAR Project | Contact: diego.paez@scai.ethz.ch · monica.perezserrano@hest.ethz.ch</p>
   </footer>
 </body>
+
 </html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -7,12 +8,14 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="favicon.ico" />
 </head>
+
 <body>
   <header>
     <a href="index.html" class="header-brand">MEDWEAR</a>
     <nav>
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
+      <a href="use-cases.html">Use Cases</a>
       <a href="documentation.html" class="active">Documentation</a>
       <a href="schemas.html">Schemas</a>
       <a href="med-api.html">MED-API</a>
@@ -32,17 +35,17 @@
 
       <div class="quick-links" style="margin-bottom: 3em;">
         <a href="#schemas" class="quick-link-card">
-          <h3>1 · Data Schemas</h3>
-          <p>Use MEDWEAR schemas in your own application — installation, validation, ROS 2 integration.</p>
+          <h3>Data Schemas</h3>
+          <p>Use MEDWEAR schemas in your own application - download, validation, ROS 2 integration.</p>
         </a>
         <a href="#platform" class="quick-link-card">
-          <h3>2 · Data Collection Platform</h3>
-          <p>Deploy and use the MEDWEAR server stack — setup, authentication, API access.</p>
+          <h3>Data Collection Platform</h3>
+          <p>Deploy and use the MEDWEAR data collection platform - installation, setup, authentication, API access.</p>
         </a>
       </div>
 
       <!-- ══════════════════════════════════════════════════════
-           BLOCK 1 — DATA SCHEMAS
+           BLOCK 1 - DATA SCHEMAS
       ══════════════════════════════════════════════════════ -->
       <h2 id="schemas" class="doc-block-title">Using the Data Schemas</h2>
 
@@ -99,17 +102,20 @@ print("Data is valid.")</code></pre>
 
         <h3>ROS 2 Messages</h3>
         <p>
-          ROS 2 <code>.msg</code> definitions are available for integration with healthcare robots and assistive devices.
+          ROS 2 <code>.msg</code> definitions are available for integration with healthcare robots and assistive
+          devices.
           The <code>healthcare_msgs</code> package supports ECG, BCG, PPG, EEG, EDA, IMU, HR, and HRV.
         </p>
-        <p><a href="https://github.com/SCAI-Lab/healthcare_msgs" target="_blank" rel="noopener">View the ROS 2 message package on GitHub</a></p>
+        <p><a href="https://github.com/SCAI-Lab/healthcare_msgs" target="_blank" rel="noopener">View the ROS 2 message
+            package on GitHub</a></p>
 
         <h3>Conversion Tools</h3>
         <p>
           Command-line tools and notebooks are available to convert CSV, JSON, and raw wearable files
           into MEDWEAR-compliant format.
         </p>
-        <p><a href="https://github.com/medwear/conversion-tools" target="_blank" rel="noopener">Explore conversion tools on GitHub</a></p>
+        <p><a href="https://github.com/medwear/conversion-tools" target="_blank" rel="noopener">Explore conversion tools
+            on GitHub</a></p>
       </section>
 
       <section>
@@ -124,26 +130,28 @@ print("Data is valid.")</code></pre>
         <h3>Publications</h3>
         <ul>
           <li>"MEDWEAR: Data Standardization of Wearable Devices for Healthcare Applications" (in preparation)</li>
-          <li>Symposium proceedings — <a href="https://scai.ethz.ch/symposium-2025.html" target="_blank" rel="noopener">PDF</a></li>
+          <li>Symposium proceedings - <a href="https://scai.ethz.ch/symposium-2025.html" target="_blank"
+              rel="noopener">PDF</a></li>
         </ul>
 
         <h3>External References</h3>
         <ul>
           <li><a href="https://json-schema.org/" target="_blank" rel="noopener">JSON Schema documentation</a></li>
-          <li><a href="https://standards.ieee.org/standard/1752-2021.html" target="_blank" rel="noopener">IEEE 1752-2021 Standard</a></li>
+          <li><a href="https://standards.ieee.org/standard/1752-2021.html" target="_blank" rel="noopener">IEEE 1752-2021
+              Standard</a></li>
           <li><a href="http://www.openmhealth.org" target="_blank" rel="noopener">Open mHealth</a></li>
         </ul>
       </section>
 
       <!-- ══════════════════════════════════════════════════════
-           BLOCK 2 — DATA COLLECTION PLATFORM & API
+           BLOCK 2 - DATA COLLECTION PLATFORM & API
       ══════════════════════════════════════════════════════ -->
       <h2 id="platform" class="doc-block-title">Using the MEDWEAR Data Collection Platform</h2>
 
       <section>
         <h2>Overview</h2>
         <p>
-          MED-API is the backend service of the MEDWEAR platform — a secure REST API for ingesting,
+          MED-API is the backend service of the MEDWEAR platform - a secure REST API for ingesting,
           querying, and managing wearable health data. It runs alongside MinIO, InfluxDB, PostgreSQL,
           Keycloak, Dagster, Grafana, and pgAdmin as a single-server Docker stack.
           For the full API reference, see the <a href="med-api.html">MED-API page</a>.
@@ -170,7 +178,8 @@ Keycloak admin : admin / hJ9nQ3vB6cN1mX5p
 InfluxDB       : admin / wY8jxK7mP2qR9nL4
 Grafana        : admin / T3vB6cN1mX5pQ2rd
 pgAdmin        : admin@medwear.local / F8yA4kW7nJ2mR6s</code></pre>
-        <p><strong>Note:</strong> Do not commit <code>.credentials.txt</code> to version control. It is already listed in <code>.gitignore</code>.</p>
+        <p><strong>Note:</strong> Do not commit <code>.credentials.txt</code> to version control. It is already listed
+          in <code>.gitignore</code>.</p>
       </section>
 
       <section>
@@ -193,21 +202,62 @@ docker compose -f docker-compose.medwear-minimal.yml down</code></pre>
         <h2>Service Access</h2>
         <table>
           <thead>
-            <tr><th>Service</th><th>URL</th><th>Credentials</th></tr>
+            <tr>
+              <th>Service</th>
+              <th>URL</th>
+              <th>Credentials</th>
+            </tr>
           </thead>
           <tbody>
-            <tr><td>MED-API</td><td>https://localhost/v1/health</td><td>Token required</td></tr>
-            <tr><td>API Docs</td><td>https://localhost/docs</td><td>—</td></tr>
-            <tr><td>Frontend</td><td>https://localhost</td><td>Keycloak login</td></tr>
-            <tr><td>Keycloak</td><td>http://localhost:8180/admin</td><td>admin / see .credentials.txt</td></tr>
-            <tr><td>pgAdmin</td><td>http://localhost:5050</td><td>admin@medwear.com / see .credentials.txt</td></tr>
-            <tr><td>InfluxDB</td><td>http://localhost:8086</td><td>admin / see .credentials.txt</td></tr>
-            <tr><td>MinIO</td><td>http://localhost:9001</td><td>minioadmin / see .credentials.txt</td></tr>
-            <tr><td>Grafana</td><td>http://localhost:3001</td><td>admin / see .credentials.txt</td></tr>
-            <tr><td>Dagster</td><td>http://localhost:3000</td><td>—</td></tr>
+            <tr>
+              <td>MED-API</td>
+              <td>https://localhost/v1/health</td>
+              <td>Token required</td>
+            </tr>
+            <tr>
+              <td>API Docs</td>
+              <td>https://localhost/docs</td>
+              <td>-</td>
+            </tr>
+            <tr>
+              <td>Frontend</td>
+              <td>https://localhost</td>
+              <td>Keycloak login</td>
+            </tr>
+            <tr>
+              <td>Keycloak</td>
+              <td>http://localhost:8180/admin</td>
+              <td>admin / see .credentials.txt</td>
+            </tr>
+            <tr>
+              <td>pgAdmin</td>
+              <td>http://localhost:5050</td>
+              <td>admin@medwear.com / see .credentials.txt</td>
+            </tr>
+            <tr>
+              <td>InfluxDB</td>
+              <td>http://localhost:8086</td>
+              <td>admin / see .credentials.txt</td>
+            </tr>
+            <tr>
+              <td>MinIO</td>
+              <td>http://localhost:9001</td>
+              <td>minioadmin / see .credentials.txt</td>
+            </tr>
+            <tr>
+              <td>Grafana</td>
+              <td>http://localhost:3001</td>
+              <td>admin / see .credentials.txt</td>
+            </tr>
+            <tr>
+              <td>Dagster</td>
+              <td>http://localhost:3000</td>
+              <td>-</td>
+            </tr>
           </tbody>
         </table>
-        <p>The MedWear platform is deployed at <code>https://172.20.83.11</code>. Frontend and API are accessible directly. Admin services require SSH tunnel or direct server access.</p>
+        <p>The MedWear platform is deployed at <code>https://172.20.83.11</code>. Frontend and API are accessible
+          directly. Admin services require SSH tunnel or direct server access.</p>
         <details>
           <summary>Remote access via SSH tunnel</summary>
           <pre><code>ssh -L 443:localhost:443 \
@@ -225,13 +275,13 @@ docker compose -f docker-compose.medwear-minimal.yml down</code></pre>
         <h2>Authentication</h2>
         <p>All endpoints require a Keycloak JWT token.</p>
         <details>
-          <summary>Get a token (via API proxy — recommended)</summary>
+          <summary>Get a token via API proxy (Recommended)</summary>
           <pre><code>curl -k -X POST https://localhost/v1/data/auth/token \
   -H "Content-Type: application/json" \
   -d '{"username":"&lt;user&gt;","password":"&lt;pass&gt;"}'</code></pre>
         </details>
         <details>
-          <summary>Get a token (direct Keycloak — internal/testing only)</summary>
+          <summary>Get a token directly from Keycloak (Internal/testing only)</summary>
           <pre><code>curl -X POST http://localhost:8180/realms/medwear/protocol/openid-connect/token \
   -H "Content-Type: application/x-www-form-urlencoded" \
   -d "grant_type=password&amp;client_id=med-api&amp;client_secret=&lt;secret&gt;&amp;username=&lt;user&gt;&amp;password=&lt;pass&gt;"</code></pre>
@@ -272,7 +322,8 @@ curl -sk -H "Authorization: Bearer $TOKEN" \
 
       <section>
         <h2>Backup</h2>
-        <p>Backs up PostgreSQL, InfluxDB, and MinIO to a compressed archive. Backups older than 30 days are deleted automatically.</p>
+        <p>Backs up PostgreSQL, InfluxDB, and MinIO to a compressed archive. Backups older than 30 days are deleted
+          automatically.</p>
         <pre><code># Run manually
 ./scripts/backup.sh /opt/medwear_backups
 
@@ -291,4 +342,5 @@ curl -sk -H "Authorization: Bearer $TOKEN" \
     <p>© 2025 ETH Zurich – MEDWEAR Project | Contact: diego.paez@scai.ethz.ch · monica.perezserrano@hest.ethz.ch</p>
   </footer>
 </body>
+
 </html>
