@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Documentation | MEDWEAR</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="icon" href="favicon.ico" />
 </head>
 
@@ -70,11 +71,11 @@
             <div class="pilot-card-header">
               <span class="pilot-tag">Option A</span>
               <h3>JSON Schemas</h3>
-              <p class="pilot-subtitle">Data storage · validation · non-ROS applications</p>
+              <p class="pilot-subtitle">Streaming · storage · schema validation</p>
             </div>
             <div class="pilot-card-body">
               <h4>When to use</h4>
-              <p>Your application stores, validates, or processes wearable data outside a ROS environment — e.g. a web
+              <p>Your application stores, validates, or processes wearable data outside a ROS environment - e.g. a web
                 backend, mobile app, or data pipeline.</p>
               <h4>Schema structure</h4>
               <p>Each schema defines a physiological signal. Minimal ECG example:</p>
@@ -115,11 +116,11 @@ print("Data is valid.")</code></pre>
             <div class="pilot-card-header">
               <span class="pilot-tag">Option B</span>
               <h3>ROS 2 Messages</h3>
-              <p class="pilot-subtitle">Real-time streaming · robotics · middleware</p>
+              <p class="pilot-subtitle">Real-time streaming · robotics</p>
             </div>
             <div class="pilot-card-body">
               <h4>When to use</h4>
-              <p>Your application uses ROS 2 — e.g. a healthcare robot, assistive device, or real-time signal processing
+              <p>Your application uses ROS 2 - e.g. a healthcare robot, assistive device, or real-time signal processing
                 pipeline that publishes sensor data as ROS topics.</p>
               <h4>Package</h4>
               <p>
@@ -152,10 +153,12 @@ cd .. && colcon build --packages-select healthcare_msgs</code></pre>
       </section>
 
       <section>
-        <h2>Conversion Tools</h2>
+        <h2>Streaming & Conversion Tools</h2>
         <p>
           Command-line tools and notebooks are available to convert CSV, JSON, and raw wearable files
-          into MEDWEAR-compliant format.
+          into MEDWEAR-compliant format. You can also use the provided libraries to stream the messages in MQTT(S), UDP,
+          websockets or BLE. These tools are ideal for testing, prototyping, and integrating MEDWEAR schemas into
+          existing workflows.
         </p>
         <p><a href="https://github.com/SCAI-Lab/healthcare_common" target="_blank" rel="noopener">Explore conversion
             tools on GitHub</a></p>
@@ -179,7 +182,7 @@ cd .. && colcon build --packages-select healthcare_msgs</code></pre>
       <section>
         <h2>Overview</h2>
         <p>
-          MED-API is the backend service of the MEDWEAR platform — a secure REST API for ingesting,
+          MED-API is the backend service of the MEDWEAR platform - a secure REST API for ingesting,
           querying, and managing wearable health data. It runs alongside MinIO, InfluxDB, PostgreSQL,
           Keycloak, Dagster, Grafana, and pgAdmin as a single-server Docker stack.
           For the full API reference, see the <a href="med-api.html">MED-API page</a>.
