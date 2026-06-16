@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Use Cases | MEDWEAR</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+</head>
+
+<body>
+  <header>
+    <a href="index.html" class="header-brand">MEDWEAR</a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="documentation.html">Documentation</a>
+      <a href="schemas.html">Schemas</a>
+      <a href="med-api.html">MED-API</a>
+      <a href="use-cases.html" class="active">Use Cases</a>
+      <a href="contribute.html">Contribute</a>
+    </nav>
+  </header>
+
+  <div class="page-banner" style="background-image: url('assets/images/hero-about.jpg')">
+    <div class="page-banner-content">
+      <h1>Use Cases</h1>
+      <p>Pilot studies demonstrating MEDWEAR in clinical and assistive-technology settings</p>
+    </div>
+  </div>
+
+  <div class="content-container">
+    <main>
+
+      <section>
+        <h2>Overview</h2>
+        <p>
+          MEDWEAR is validated through two ongoing pilot studies in collaboration with clinical and
+          robotics research groups at ETH Zurich. Both pilots share the same end destination -
+          the MEDWEAR data collection platform - but differ in how data flows from the wearable to
+          that platform: one is offline via a smartphone app, the other is online via ROS 2 middleware.
+        </p>
+        <figure style="margin: 2em 0;">
+          <svg width="100%" viewBox="0 0 680 520" role="img" xmlns="http://www.w3.org/2000/svg">
+            <title>Two pilot studies: SPZ offline via smartphone, server, MEDWEAR format and platform; LLUI online via
+              ROS and MEDWEAR platform</title>
+            <desc>Diagram showing two pilots with matching container sizes. SPZ: wearable sends data to a smartphone
+              running the SCAI app, which sends it to a server, then converted to MEDWEAR format and sent to the MEDWEAR
+              data collection platform, offline. LLUI: wearable streams PPG, ECG, EDA, IMU in MEDWEAR format via ROS
+              middleware and MED-API to the MEDWEAR data collection platform, online, used for real-time cognitive load
+              estimation.</desc>
+            <defs>
+              <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6"
+                orient="auto-start-reverse">
+                <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </marker>
+            </defs>
+
+            <!-- SPZ panel -->
+            <rect x="40" y="40" width="290" height="440" rx="16" fill="#eeedfe" stroke="#534ab7" stroke-width="0.5" />
+            <text x="60" y="68" fill="#3c3489" font-family="'Segoe UI', system-ui, sans-serif" font-size="14"
+              font-weight="500">SPZ - Pilot 1</text>
+            <text x="60" y="86" fill="#534ab7" font-family="'Segoe UI', system-ui, sans-serif" font-size="12">Offline,
+              via smartphone app</text>
+
+            <rect x="60" y="105" width="250" height="56" rx="8" fill="#f1efe8" stroke="#5f5e5a" stroke-width="0.5" />
+            <text x="185" y="125" text-anchor="middle" dominant-baseline="central" fill="#444441"
+              font-family="'Segoe UI', system-ui, sans-serif" font-size="14" font-weight="500">Wearable device</text>
+            <text x="185" y="145" text-anchor="middle" dominant-baseline="central" fill="#5f5e5a"
+              font-family="'Segoe UI', system-ui, sans-serif" font-size="12">PPG, EDA, IMU</text>
+
+            <line x1="185" y1="161" x2="185" y2="180" marker-end="url(#arrow)" stroke="#73726c" stroke-width="1.5"
+              fill="none" />
+
+            <rect x="60" y="180" width="250" height="56" rx="8" fill="#f1efe8" stroke="#5f5e5a" stroke-width="0.5" />
+            <text x="185" y="200" text-anchor="middle" dominant-baseline="central" fill="#444441"
+              font-family="'Segoe UI', system-ui, sans-serif" font-size="14" font-weight="500">Smartphone - SCAI
+              app</text>
+            <text x="185" y="220" text-anchor="middle" dominant-baseline="central" fill="#5f5e5a"
+              font-family="'Segoe UI', system-ui, sans-serif" font-size="12">Collects and sends data</text>
+
+            <line x1="185" y1="236" x2="185" y2="255" marker-end="url(#arrow)" stroke="#73726c" stroke-width="1.5"
+              fill="none" />
+
+            <rect x="60" y="255" width="250" height="56" rx="8" fill="#f1efe8" stroke="#5f5e5a" stroke-width="0.5" />
+            <text x="185" y="275" text-anchor="middle" dominant-baseline="central" fill="#444441"
+              font-family="'Segoe UI', system-ui, sans-serif" font-size="14" font-weight="500">Server</text>
+            <text x="185" y="295" text-anchor="middle" dominant-baseline="central" fill="#5f5e5a"
+              font-family="'Segoe UI', system-ui, sans-serif" font-size="12">Intermediate storage</text>
+
+            <line x1="185" y1="311" x2="185" y2="330" marker-end="url(#arrow)" stroke="#73726c" stroke-width="1.5"
+              fill="none" />
+
+            <rect x="60" y="330" width="250" height="56" rx="8" fill="#f1efe8" stroke="#5f5e5a" stroke-width="0.5" />
+            <text x="185" y="358" text-anchor="middle" dominant-baseline="central" fill="#444441"
+              font-family="'Segoe UI', system-ui, sans-serif" font-size="14" font-weight="500">MEDWEAR format</text>
+
+            <line x1="185" y1="386" x2="185" y2="405" marker-end="url(#arrow)" stroke="#73726c" stroke-width="1.5"
+              fill="none" />
+
+            <rect x="60" y="405" width="250" height="56" rx="8" fill="#faece7" stroke="#993c1d" stroke-width="0.5" />
+            <text x="185" y="425" text-anchor="middle" dominant-baseline="central" fill="#712b13"
+              font-family="'Segoe UI', system-ui, sans-serif" font-size="14" font-weight="500">MEDWEAR platform</text>
+            <text x="185" y="445" text-anchor="middle" dominant-baseline="central" fill="#993c1d"
+              font-family="'Segoe UI', system-ui, sans-serif" font-size="12">Visualization, roles, export</text>
+
+            <!-- LLUI panel -->
+            <rect x="350" y="40" width="290" height="440" rx="16" fill="#e1f5ee" stroke="#0f6e56" stroke-width="0.5" />
+            <text x="370" y="68" fill="#085041" font-family="'Segoe UI', system-ui, sans-serif" font-size="14"
+              font-weight="500">LLUI - Pilot 2</text>
+            <text x="370" y="86" fill="#0f6e56" font-family="'Segoe UI', system-ui, sans-serif" font-size="12">Online
+              cognitive load estimation</text>
+
+            <rect x="370" y="105" width="250" height="56" rx="8" fill="#f1efe8" stroke="#5f5e5a" stroke-width="0.5" />
+            <text x="495" y="125" text-anchor="middle" dominant-baseline="central" fill="#444441"
+              font-family="'Segoe UI', system-ui, sans-serif" font-size="14" font-weight="500">Wearable device</text>
+            <text x="495" y="145" text-anchor="middle" dominant-baseline="central" fill="#5f5e5a"
+              font-family="'Segoe UI', system-ui, sans-serif" font-size="12">PPG, ECG, EDA, IMU</text>
+
+            <line x1="495" y1="161" x2="495" y2="180" marker-end="url(#arrow)" stroke="#73726c" stroke-width="1.5"
+              fill="none" />
+
+            <rect x="370" y="180" width="250" height="56" rx="8" fill="#f1efe8" stroke="#5f5e5a" stroke-width="0.5" />
+            <text x="495" y="208" text-anchor="middle" dominant-baseline="central" fill="#444441"
+              font-family="'Segoe UI', system-ui, sans-serif" font-size="14" font-weight="500">MEDWEAR format</text>
+
+            <line x1="495" y1="236" x2="495" y2="255" marker-end="url(#arrow)" stroke="#73726c" stroke-width="1.5"
+              fill="none" />
+
+            <rect x="370" y="255" width="250" height="56" rx="8" fill="#f1efe8" stroke="#5f5e5a" stroke-width="0.5" />
+            <text x="495" y="283" text-anchor="middle" dominant-baseline="central" fill="#444441"
+              font-family="'Segoe UI', system-ui, sans-serif" font-size="14" font-weight="500">ROS middleware</text>
+
+            <line x1="495" y1="311" x2="495" y2="330" marker-end="url(#arrow)" stroke="#73726c" stroke-width="1.5"
+              fill="none" />
+
+            <rect x="370" y="330" width="250" height="56" rx="8" fill="#f1efe8" stroke="#5f5e5a" stroke-width="0.5" />
+            <text x="495" y="358" text-anchor="middle" dominant-baseline="central" fill="#444441"
+              font-family="'Segoe UI', system-ui, sans-serif" font-size="14" font-weight="500">MED-API</text>
+
+            <line x1="495" y1="386" x2="495" y2="405" marker-end="url(#arrow)" stroke="#73726c" stroke-width="1.5"
+              fill="none" />
+
+            <rect x="370" y="405" width="250" height="56" rx="8" fill="#faece7" stroke="#993c1d" stroke-width="0.5" />
+            <text x="495" y="425" text-anchor="middle" dominant-baseline="central" fill="#712b13"
+              font-family="'Segoe UI', system-ui, sans-serif" font-size="14" font-weight="500">MEDWEAR platform</text>
+            <text x="495" y="445" text-anchor="middle" dominant-baseline="central" fill="#993c1d"
+              font-family="'Segoe UI', system-ui, sans-serif" font-size="12">Visualization, roles, export</text>
+          </svg>
+          <figcaption style="text-align:center; color: var(--text-muted); font-size: 0.87rem; margin-top: 10px;">
+            Data flow for the two MEDWEAR pilot studies. Both pilots use MEDWEAR schemas and converge on the same data
+            collection platform.
+          </figcaption>
+        </figure>
+      </section>
+
+      <div class="pilot-grid">
+
+        <div class="pilot-card pilot-card--spz">
+          <div class="pilot-card-header">
+            <span class="pilot-tag">Pilot 1</span>
+            <h3>SPZ - Offline data collection</h3>
+          </div>
+          <div class="pilot-card-body">
+            <h4>Context</h4>
+            <p>
+              Clinical study in collaboration with SPZ (Schweizerisches Paraplegiker-Zentrum).
+              Participants wear sensors during daily activities outside a lab environment.
+              The study focuses on capturing physiological signals - PPG, EDA, and IMU - using
+              consumer-grade wearable devices.
+            </p>
+            <h4>Data flow</h4>
+            <ol>
+              <li>A wearable device streams <strong>PPG, EDA, and IMU</strong> signals.</li>
+              <li>A smartphone running the <strong>SCAI app</strong> collects and buffers the raw data locally.</li>
+              <li>Batches are uploaded to an intermediate <strong>server</strong> for secure storage.</li>
+              <li>A post-processing pipeline converts the data to <strong>MEDWEAR format</strong> (JSON Schema
+                validated).</li>
+              <li>Standardized data is ingested into the <strong>MEDWEAR platform</strong> for visualization, access
+                control, and export.</li>
+            </ol>
+            <h4>Why offline?</h4>
+            <p>
+              Participants may not always have reliable internet connectivity. The smartphone buffers
+              data locally and syncs when a connection is available, decoupling data collection
+              from transmission.
+            </p>
+            <h4>Signals</h4>
+            <div class="signal-tags">
+              <span class="signal-tag">PPG</span>
+              <span class="signal-tag">EDA</span>
+              <span class="signal-tag">IMU</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pilot-card pilot-card--llui">
+          <div class="pilot-card-header">
+            <span class="pilot-tag">Pilot 2</span>
+            <h3>LLUI - Online cognitive load estimation</h3>
+          </div>
+          <div class="pilot-card-body">
+            <h4>Context</h4>
+            <p>
+              Research study at ETH Zurich's LLUI (Lower-Limb User Interaction) lab.
+              Participants wear sensors during human-robot interaction tasks.
+              The goal is <strong>real-time cognitive load estimation</strong> to adapt assistive
+              robot behavior based on the user's physiological state.
+            </p>
+            <h4>Data flow</h4>
+            <ol>
+              <li>A wearable device streams <strong>PPG, ECG, EDA, and IMU</strong> signals continuously.</li>
+              <li>Raw data is immediately formatted as <strong>MEDWEAR messages</strong> at the source.</li>
+              <li><strong>ROS 2 middleware</strong> transports the data in real time using <code>healthcare_msgs</code>
+                message definitions.</li>
+              <li>The <strong>MED-API ROS 2 bridge</strong> ingests the stream into the platform with low latency.</li>
+              <li>The <strong>MEDWEAR platform</strong> serves the data for live dashboards, role-based access, and
+                downstream ML pipelines.</li>
+            </ol>
+            <h4>Why online?</h4>
+            <p>
+              Cognitive load estimation requires sub-second latency. An online pipeline eliminates
+              buffering delays and enables closed-loop feedback between the wearable signals and
+              the robot controller.
+            </p>
+            <h4>Signals</h4>
+            <div class="signal-tags">
+              <span class="signal-tag">PPG</span>
+              <span class="signal-tag">ECG</span>
+              <span class="signal-tag">EDA</span>
+              <span class="signal-tag">IMU</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <section style="margin-top: 3em;">
+        <h2>What the Pilots Validate</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Property</th>
+              <th>SPZ (Offline)</th>
+              <th>LLUI (Online)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Connectivity model</td>
+              <td>Asynchronous batch upload</td>
+              <td>Synchronous real-time stream</td>
+            </tr>
+            <tr>
+              <td>Transport layer</td>
+              <td>SCAI smartphone app</td>
+              <td>ROS 2 + MED-API bridge</td>
+            </tr>
+            <tr>
+              <td>Schema format</td>
+              <td>JSON Schema (post-hoc conversion)</td>
+              <td>ROS 2 <code>healthcare_msgs</code> (native)</td>
+            </tr>
+            <tr>
+              <td>Primary signal types</td>
+              <td>PPG, EDA, IMU</td>
+              <td>PPG, ECG, EDA, IMU</td>
+            </tr>
+            <tr>
+              <td>Primary use</td>
+              <td>Clinical data collection &amp; export</td>
+              <td>Real-time cognitive load estimation</td>
+            </tr>
+            <tr>
+              <td>Downstream consumer</td>
+              <td>Researcher / clinician dashboard</td>
+              <td>Closed-loop robot controller + dashboard</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+    </main>
+  </div>
+
+  <footer>
+    <div class="footer-logos">
+      <img src="assets/images/scai_logo.png" alt="SCAI Lab Logo" />
+      <img src="assets/images/ethz_logo.png" alt="ETH Zurich Logo" class="ethz-logo" />
+    </div>
+    <p>© 2026 ETH Zurich – MEDWEAR Project | Contact: diego.paez@scai.ethz.ch · monica.perezserrano@hest.ethz.ch</p>
+  </footer>
+</body>
+
+</html>

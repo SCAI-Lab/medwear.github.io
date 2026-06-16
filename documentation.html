@@ -6,48 +6,78 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Documentation | MEDWEAR</title>
   <link rel="stylesheet" href="style.css" />
-  <link rel="icon" href="favicon.ico" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
 </head>
 
 <body>
   <header>
-    <div class="header-upper">
-        <!-- <img src="assets/images/medwear_logo.png" alt="MEDWEAR Logo" class="logo" /> -->
-    </div>
-    <div class="header-lower">
-        <h1>MEDWEAR</h1>
-        <p>Open, Interoperable Standards for Medical Wearables</p>
-    </div>
-    <hr class="header-separator" />
-    <div class="under-construction-banner">
-        🚧 This website is currently under construction. Some content may be incomplete. 🚧
-    </div>
-  </div>
+    <a href="index.html" class="header-brand">MEDWEAR</a>
     <nav>
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
-      <a href="standards.html">Standards</a>
       <a href="documentation.html" class="active">Documentation</a>
       <a href="schemas.html">Schemas</a>
-      <a href="contribute.html">Contribute</a>
       <a href="med-api.html">MED-API</a>
+      <a href="use-cases.html">Use Cases</a>
+      <a href="contribute.html">Contribute</a>
     </nav>
   </header>
 
-<div class="content-container">
-  <main>
-    <section>
-      <h2>Usage Examples</h2>
+  <div class="page-banner" style="background-image: url('assets/images/hero-schemas.jpg')">
+    <div class="page-banner-content">
+      <h1>Documentation</h1>
+      <p>Guides for using MEDWEAR schemas and the data collection platform</p>
+    </div>
+  </div>
 
-      <h3>Using MEDWEAR JSON Schemas</h3>
-      <p>The schemas define the data structure for wearable sensor data. You can validate your data against these schemas to ensure interoperability.</p>
+  <div class="content-container">
+    <main>
 
-      <h4>Example: ECG Data JSON</h4>
-      <pre><code>{
+      <div class="quick-links" style="margin-bottom: 3em;">
+        <a href="#schemas" class="quick-link-card">
+          <h3>Data Schemas</h3>
+          <p>Use MEDWEAR schemas in your own application - download, validation, ROS 2 integration.</p>
+        </a>
+        <a href="#platform" class="quick-link-card">
+          <h3>Data Collection Platform</h3>
+          <p>Deploy and use the MEDWEAR data collection platform - installation, setup, authentication, API access.</p>
+        </a>
+      </div>
+
+      <!-- ══════════════════════════════════════════════════════
+           BLOCK 1 - DATA SCHEMAS
+      ══════════════════════════════════════════════════════ -->
+      <h2 id="schemas" class="doc-block-title">Using the Data Schemas</h2>
+
+      <section>
+        <h2>Integration Options</h2>
+        <p>
+          MEDWEAR schemas are available in two formats. Choose based on your application:
+          JSON Schemas for general data storage and validation, or ROS 2 messages for
+          real-time streaming and robotics middleware.
+        </p>
+
+        <div class="pilot-grid" style="margin-top: 1.4em;">
+
+          <div class="pilot-card pilot-card--json">
+            <div class="pilot-card-header">
+              <span class="pilot-tag">Option A</span>
+              <h3>JSON Schemas</h3>
+              <p class="pilot-subtitle">Storage · validation · non-ROS applications</p>
+            </div>
+            <div class="pilot-card-body">
+              <h4>When to use</h4>
+              <p>Your application stores, validates, or processes wearable data outside a ROS environment — e.g. a web
+                backend, mobile app, or data pipeline.</p>
+              <h4>Install</h4>
+              <pre><code>git clone https://github.com/SCAI-Lab/ord_schemas</code></pre>
+              <h4>Schema structure</h4>
+              <p>Each schema defines a physiological signal. Minimal ECG example:</p>
+              <pre><code>{
   "schema_id": "org.medwear.biosignal.ecg",
   "version": "1.0",
   "data": {
-    "ecg": [0.12, 0.15, 0.11, ...],
+    "ecg": [0.12, 0.15, 0.11],
     "sample_rate": 250,
     "units": "mV"
   },
@@ -56,88 +86,330 @@
     "timestamp": "2025-06-30T15:30:00Z"
   }
 }</code></pre>
-
-      <h3>Loading MEDWEAR Schemas in Python</h3>
-      <pre><code>import json
+              <h4>Validate in Python</h4>
+              <pre><code>import json
 from jsonschema import validate
 
-with open('ecg_schema.json') as schema_file:
-    schema = json.load(schema_file)
-
-with open('ecg_data.json') as data_file:
-    data = json.load(data_file)
+with open('ecg_schema.json') as f:
+    schema = json.load(f)
+with open('ecg_data.json') as f:
+    data = json.load(f)
 
 validate(instance=data, schema=schema)
-print("Data is valid according to MEDWEAR ECG schema.")</code></pre>
+print("Data is valid.")</code></pre>
+              <h4>Resources</h4>
+              <p>
+                Browse schemas on the <a href="schemas.html">Schemas page</a> or download the full set from
+                <a href="https://github.com/SCAI-Lab/ord_schemas/tree/main/schema" target="_blank"
+                  rel="noopener">GitHub</a>.
+              </p>
+            </div>
+          </div>
 
-      <h3>Further Resources</h3>
-      <ul>
-        <li><a href="https://json-schema.org/" target="_blank" rel="noopener">JSON Schema documentation</a></li>
-        <li><a href="https://github.com/SCAI-Lab/ord_schemas" target="_blank" rel="noopener">MEDWEAR GitHub Repository</a></li>
-        <li><a href="schemas.html">Explore MEDWEAR Schemas (new page)</a></li>
-      </ul>
-    </section>
+          <div class="pilot-card pilot-card--ros">
+            <div class="pilot-card-header">
+              <span class="pilot-tag">Option B</span>
+              <h3>ROS 2 Messages</h3>
+              <p class="pilot-subtitle">Real-time streaming · robotics</p>
+            </div>
+            <div class="pilot-card-body">
+              <h4>When to use</h4>
+              <p>Your application uses ROS 2 — e.g. a healthcare robot, assistive device, or real-time signal processing
+                pipeline that publishes sensor data as ROS topics.</p>
+              <h4>Package</h4>
+              <p>
+                The <code>healthcare_msgs</code> package provides <code>.msg</code> definitions for all
+                MEDWEAR signal types. Debian packages are available for Humble, Jazzy, and Rolling on
+                amd64 and arm64. Supported signals:
+              </p>
+              <div class="signal-tags" style="margin-bottom: 0.8em;">
+                <span class="signal-tag">ECG</span>
+                <span class="signal-tag">BCG</span>
+                <span class="signal-tag">PPG</span>
+                <span class="signal-tag">EEG</span>
+                <span class="signal-tag">EDA</span>
+                <span class="signal-tag">IMU</span>
+                <span class="signal-tag">HR</span>
+                <span class="signal-tag">HRV</span>
+              </div>
+              <h4>Install via APT</h4>
+              <p>Replace <code>humble</code> / <code>amd64</code> / <code>jammy</code> with your distro and
+                architecture:</p>
+              <pre><code># Add GPG key
+sudo curl -fsSL \
+  https://scai-lab.github.io/healthcare_msgs/humble-amd64/KEY.gpg \
+  -o /etc/apt/trusted.gpg.d/healthcare-msgs.gpg
 
-    <section>
-      <h2>Documentation & Resources</h2>
+# Add APT source
+echo "deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/healthcare-msgs.gpg] \
+  https://scai-lab.github.io/healthcare_msgs/humble-amd64 humble-jammy main" \
+  | sudo tee /etc/apt/sources.list.d/healthcare-msgs.list
 
-      <h3>📚 User Guides</h3>
-      <ul>
-        <li><a href="#schemas">Using MEDWEAR Data Schemas</a></li>
-        <li><a href="#ros">ROS 2 Integration Guide</a></li>
-        <li><a href="#conversion">Data Conversion Workflow</a></li>
-      </ul>
+# Install
+sudo apt update &amp;&amp; sudo apt install ros-humble-healthcare-msgs</code></pre>
+              <table style="margin-top: 0.6em;">
+                <thead>
+                  <tr>
+                    <th>ROS distro</th>
+                    <th>OS</th>
+                    <th>Architectures</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Humble</td>
+                    <td>Ubuntu 22.04 Jammy</td>
+                    <td>amd64, arm64</td>
+                  </tr>
+                  <tr>
+                    <td>Jazzy</td>
+                    <td>Ubuntu 24.04 Noble</td>
+                    <td>amd64, arm64</td>
+                  </tr>
+                  <tr>
+                    <td>Rolling</td>
+                    <td>Ubuntu 24.10 Resolute</td>
+                    <td>amd64, arm64</td>
+                  </tr>
+                </tbody>
+              </table>
+              <h4>Resources</h4>
+              <p>
+                <a href="https://github.com/SCAI-Lab/healthcare_msgs" target="_blank" rel="noopener">View the full
+                  package on GitHub</a>
+              </p>
+            </div>
+          </div>
 
-      <h3 id="schemas">📄 JSON Schemas</h3>
-      <p>
-        Our schemas extend Open mHealth to include raw sensor formats. <br />
-        <a href="schemas.html">View all schemas on a dedicated page</a> | <a href="https://github.com/SCAI-Lab/ord_schemas" target="_blank" rel="noopener">View on GitHub</a>
-      </p>
+        </div>
+      </section>
 
-      <h3 id="ros">🤖 ROS 2 Messages</h3>
-      <p>
-        Download ROS 2 `.msg` definitions for integration with healthcare robots and assistive devices.<br />
-        <a href="https://github.com/SCAI-Lab/healthcare_msgs" target="_blank" rel="noopener">View ROS 2 message package</a>
-      </p>
+      <section>
+        <h2>Streaming & Conversion Tools</h2>
+        <p>
+          Command-line tools and notebooks are available to convert CSV, JSON, and raw wearable files
+          into MEDWEAR-compliant format. You can also use the provided libraries to stream the messages in MQTT(S), UDP,
+          websockets or BLE. These tools are ideal for testing, prototyping, and integrating MEDWEAR schemas into
+          existing workflows.
+        </p>
+        <p><a href="https://github.com/SCAI-Lab/healthcare_common" target="_blank" rel="noopener">Explore conversion
+            tools on GitHub</a></p>
+      </section>
 
-      <h3 id="conversion">🔁 Conversion Tools</h3>
-      <p>
-        Command-line tools and notebooks to convert CSV/JSON/wearable data to MEDWEAR-compliant format.<br />
-        <a href="https://github.com/medwear/conversion-tools" target="_blank" rel="noopener">Explore conversion tools</a>
-      </p>
+      <section>
+        <h2>Resources</h2>
 
-      <h3>📊 Example Datasets</h3>
-      <p>
-        Sample anonymized datasets for development and testing.<br />
-        <a href="https://github.com/medwear/sample-data" target="_blank" rel="noopener">Download examples</a>
-      </p>
+        <h3>External References</h3>
+        <ul>
+          <li><a href="https://json-schema.org/" target="_blank" rel="noopener">JSON Schema documentation</a></li>
+          <li><a href="http://www.openmhealth.org" target="_blank" rel="noopener">Open mHealth</a></li>
+        </ul>
+      </section>
 
-      <h3>🧠 Publications</h3>
-      <ul>
-        <li>"MEDWEAR: Data Standardization of Wearable Devices for Healthcare Applications" (in preparation)</li>
-        <li>Symposium [<a href="https://scai.ethz.ch/symposium-2025.html" target="_blank" rel="noopener">PDF</a>]</li>
-      </ul>
+      <!-- ══════════════════════════════════════════════════════
+           BLOCK 2 - DATA COLLECTION PLATFORM & API
+      ══════════════════════════════════════════════════════ -->
+      <h2 id="platform" class="doc-block-title">Using the MEDWEAR Data Collection Platform</h2>
 
-      <h3>🛠️ Contribute</h3>
-      <p>
-        Found a bug or want to add support for new sensors? <br />
-        See our <a href="contribute.html" target="_blank" rel="noopener">contributing guide</a>.
-      </p>
+      <section>
+        <h2>Overview</h2>
+        <p>
+          MED-API is the backend service of the MEDWEAR platform - a secure REST API for ingesting,
+          querying, and managing wearable health data. It runs alongside MinIO, InfluxDB, PostgreSQL,
+          Keycloak, Dagster, Grafana, and pgAdmin as a single-server Docker stack.
+          For the full API reference, see the <a href="med-api.html">MED-API page</a>.
+        </p>
+      </section>
 
-      <h3>❓ FAQs</h3>
-      <p>
-        Coming soon: Frequently asked questions about MEDWEAR schemas and implementation.
-      </p>
-    </section>
-  </main>
-</div>
+      <section>
+        <h2>Installation</h2>
+        <p>Clone the MEDWEAR platform repository from GitHub:</p>
+        <pre><code>git clone https://github.com/SCAI-Lab/medwear
+cd medwear</code></pre>
+      </section>
+
+      <section>
+        <h2>Quick Setup</h2>
+        <pre><code>./setup.sh</code></pre>
+        <p>This will automatically:</p>
+        <ul>
+          <li>Generate random secure credentials for all services (PostgreSQL, MinIO, Grafana, Keycloak, InfluxDB)</li>
+          <li>Create <code>.env</code> and <code>.env.medwear</code> files</li>
+          <li>Start all Docker services</li>
+          <li>Initialize InfluxDB and PostgreSQL tables</li>
+          <li>Save all generated credentials to <code>.credentials.txt</code></li>
+        </ul>
+        <p>After setup, view your credentials:</p>
+        <pre><code>cat .credentials.txt</code></pre>
+        <pre><code>PostgreSQL     : medwear / xK7mP2qR9nL4wY8j
+MinIO root     : minioadmin / hT3vB6cN1mX5pQ2r
+MinIO API key  : medwear-api / dF8yA4kW7nJ2mR6s...
+Keycloak admin : admin / hJ9nQ3vB6cN1mX5p
+InfluxDB       : admin / wY8jxK7mP2qR9nL4
+Grafana        : admin / T3vB6cN1mX5pQ2rd
+pgAdmin        : admin@medwear.local / F8yA4kW7nJ2mR6s</code></pre>
+        <p><strong>Note:</strong> Do not commit <code>.credentials.txt</code> to version control. It is already listed
+          in <code>.gitignore</code>.</p>
+      </section>
+
+      <section>
+        <h2>Start &amp; Stop</h2>
+        <pre><code># First time or after code changes
+docker compose -f docker-compose.medwear-minimal.yml build
+docker compose -f docker-compose.medwear-minimal.yml up -d
+
+# Subsequent runs (no code changes)
+docker compose -f docker-compose.medwear-minimal.yml up -d</code></pre>
+        <p>After starting, Keycloak takes ~30 seconds to be ready.</p>
+        <pre><code># Restart a single service (e.g. after API code change)
+docker compose -f docker-compose.medwear-minimal.yml restart med-api
+
+# Stop all services
+docker compose -f docker-compose.medwear-minimal.yml down</code></pre>
+      </section>
+
+      <section>
+        <h2>Service Access</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Service</th>
+              <th>URL</th>
+              <th>Credentials</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>MED-API</td>
+              <td>https://localhost/v1/health</td>
+              <td>Token required</td>
+            </tr>
+            <tr>
+              <td>API Docs</td>
+              <td>https://localhost/docs</td>
+              <td>-</td>
+            </tr>
+            <tr>
+              <td>Frontend</td>
+              <td>https://localhost</td>
+              <td>Keycloak login</td>
+            </tr>
+            <tr>
+              <td>Keycloak</td>
+              <td>http://localhost:8180/admin</td>
+              <td>admin / see .credentials.txt</td>
+            </tr>
+            <tr>
+              <td>pgAdmin</td>
+              <td>http://localhost:5050</td>
+              <td>admin@medwear.com / see .credentials.txt</td>
+            </tr>
+            <tr>
+              <td>InfluxDB</td>
+              <td>http://localhost:8086</td>
+              <td>admin / see .credentials.txt</td>
+            </tr>
+            <tr>
+              <td>MinIO</td>
+              <td>http://localhost:9001</td>
+              <td>minioadmin / see .credentials.txt</td>
+            </tr>
+            <tr>
+              <td>Grafana</td>
+              <td>http://localhost:3001</td>
+              <td>admin / see .credentials.txt</td>
+            </tr>
+            <tr>
+              <td>Dagster</td>
+              <td>http://localhost:3000</td>
+              <td>-</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>The MedWear platform is deployed at <code>https://172.20.83.11</code>. Frontend and API are accessible
+          directly. Admin services require SSH tunnel or direct server access.</p>
+        <details>
+          <summary>Remote access via SSH tunnel</summary>
+          <pre><code>ssh -L 443:localhost:443 \
+    -L 80:localhost:80 \
+    -L 8180:localhost:8180 \
+    -L 9001:localhost:9001 \
+    -L 8086:localhost:8086 \
+    -L 3001:localhost:3001 \
+    -L 5050:localhost:5050 \
+    user@your-server.com</code></pre>
+        </details>
+      </section>
+
+      <section>
+        <h2>Authentication</h2>
+        <p>All endpoints require a Keycloak JWT token.</p>
+        <details>
+          <summary>Get a token via API proxy (Recommended)</summary>
+          <pre><code>curl -k -X POST https://localhost/v1/data/auth/token \
+  -H "Content-Type: application/json" \
+  -d '{"username":"&lt;user&gt;","password":"&lt;pass&gt;"}'</code></pre>
+        </details>
+        <details>
+          <summary>Get a token directly from Keycloak (Internal/testing only)</summary>
+          <pre><code>curl -X POST http://localhost:8180/realms/medwear/protocol/openid-connect/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=password&amp;client_id=med-api&amp;client_secret=&lt;secret&gt;&amp;username=&lt;user&gt;&amp;password=&lt;pass&gt;"</code></pre>
+        </details>
+        <details>
+          <summary>Use the token</summary>
+          <pre><code>curl -k -H "Authorization: Bearer &lt;access_token&gt;" https://localhost/v1/me</code></pre>
+        </details>
+        <details>
+          <summary>Health check</summary>
+          <pre><code>curl -k https://localhost/v1/health</code></pre>
+        </details>
+      </section>
+
+      <section>
+        <h2>Testing</h2>
+        <pre><code>cd /path/to/repo/medwear_med_api
+source venv/bin/activate
+
+python3 scripts/test_phase3.py   # Batch upload, CSV, validation
+python3 scripts/test_phase4.py   # Query, delete, restore, admin, multi-project
+python3 scripts/test_phase5.py   # Error handling: 46/46 tests</code></pre>
+        <details>
+          <summary>Quick smoke test</summary>
+          <pre><code># 1. Get a token
+TOKEN=$(curl -sk -X POST https://localhost/v1/data/auth/token \
+  -H "Content-Type: application/json" \
+  -d '{"username":"&lt;your-username&gt;","password":"&lt;your-password&gt;"}' | jq -r .access_token)
+
+# 2. Check health
+curl -sk https://localhost/v1/health | jq .
+
+# 3. Query recent batches
+curl -sk -H "Authorization: Bearer $TOKEN" \
+  "https://localhost/v1/data?limit=5" | jq .</code></pre>
+        </details>
+      </section>
+
+      <section>
+        <h2>Backup</h2>
+        <p>Backs up PostgreSQL, InfluxDB, and MinIO to a compressed archive. Backups older than 30 days are deleted
+          automatically.</p>
+        <pre><code># Run manually
+./scripts/backup.sh /opt/medwear_backups
+
+# Add to crontab (daily at 2 AM)
+0 2 * * * /path/to/med-api/scripts/backup.sh /opt/medwear_backups >> /var/log/medwear_backup.log 2>&1</code></pre>
+      </section>
+
+    </main>
+  </div>
+
   <footer>
     <div class="footer-logos">
-      <img src="assets/images/scai_logo.png" alt="SCAI Lab Logo" class="logo" />
-      <img src="assets/images/dart_logo.png" alt="DART Logo" class="logo" />
-      <img src="assets/images/ethz_logo.png" alt="ETH Zurich Logo" class="logo" />
+      <img src="assets/images/scai_logo.png" alt="SCAI Lab Logo" />
+      <img src="assets/images/ethz_logo.png" alt="ETH Zurich Logo" class="ethz-logo" />
     </div>
-    <p>© 2025 ETH Zurich – MEDWEAR Project | Contact: diego.paez@scai.ethz.ch</p>
+    <p>© 2026 ETH Zurich – MEDWEAR Project | Contact: diego.paez@scai.ethz.ch · monica.perezserrano@hest.ethz.ch</p>
   </footer>
 </body>
 
